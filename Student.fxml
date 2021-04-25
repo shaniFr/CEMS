@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.Avatar?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<fx:root dividerPositions="0.16483516483516486" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="430.0" prefWidth="530.0" type="SplitPane" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StudentControlller">
+  <items>
+    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="530.0">
+         <children>
+            <Label fx:id="TeacherLabel" layoutX="191.0" layoutY="6.0" prefHeight="58.0" prefWidth="148.0" style="-fx-font-family: Dubai; -fx-font-size: 40;" text="Student" />
+            <Avatar layoutX="48.0" layoutY="17.0" />
+         </children></AnchorPane>
+    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="530.0">
+         <children>
+            <Button fx:id="StudentGradeBtn" layoutX="164.0" layoutY="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="202.0" style="-fx-background-color: light blue; -fx-text-fill: black; -fx-border-radius: 70; -fx-border-color: black; -fx-border-image-width: 2; -fx-font-family: dubai light; -fx-font-size: 21;" text="View Grades" />
+            <Button fx:id="RetrieveCoptBtn" layoutX="164.0" layoutY="199.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="202.0" style="-fx-background-color: light blue; -fx-text-fill: black; -fx-border-radius: 70; -fx-border-color: black; -fx-border-image-width: 2; -fx-font-family: dubai light; -fx-font-size: 21;" text="Retrieve copy  " />
+            <Button fx:id="ExamniationBtn" layoutX="164.0" layoutY="129.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="202.0" style="-fx-background-color: light blue; -fx-text-fill: black; -fx-border-radius: 70; -fx-border-color: black; -fx-border-image-width: 2; -fx-font-family: dubai light; -fx-font-size: 21;" text="Examination" />
+         </children>
+      </AnchorPane>
+  </items>
+</fx:root>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.Avatar?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<fx:root dividerPositions="0.21134538152610444" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="430.0" prefWidth="530.0" type="SplitPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Teacher">
+  <items>
+    <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="530.0">
+         <children>
+            <Label fx:id="TeacherLabel" layoutX="191.0" layoutY="6.0" prefHeight="58.0" prefWidth="148.0" style="-fx-font-family: Dubai; -fx-font-size: 40;" text="Teacher" />
+            <Avatar fx:id="Logo" layoutX="46.0" layoutY="17.0">
+               <image>
+                  <Image url="@avatar.png" />
+               </image></Avatar>
+         </children></AnchorPane>
+    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="530.0">
+         <children>
+            <Button fx:id="ExamsTeacherBtn" layoutX="184.0" layoutY="66.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="158.0" style="-fx-background-color: light blue; -fx-text-fill: black; -fx-border-radius: 70; -fx-border-color: black; -fx-border-image-width: 2; -fx-font-family: dubai light; -fx-font-size: 21;" text="Exams" />
+            <Button fx:id="QuestionTeacherBtn" layoutX="184.0" layoutY="150.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="158.0" style="-fx-background-color: light blue; -fx-text-fill: black; -fx-border-radius: 70; -fx-border-color: black; -fx-border-image-width: 2; -fx-font-family: dubai light; -fx-font-size: 21;" text="Questions" />
+            <Button fx:id="ReportTeacherBtn" layoutX="184.0" layoutY="235.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="158.0" style="-fx-background-color: light blue; -fx-text-fill: black; -fx-border-radius: 70; -fx-border-color: black; -fx-border-image-width: 2; -fx-font-family: dubai light; -fx-font-size: 21;" text="Get report" />
+         </children></AnchorPane>
+  </items>
+</fx:root>
