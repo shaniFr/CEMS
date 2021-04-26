@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<SplitPane dividerPositions="0.17369477911646589" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+         <children>
+            <Label fx:id="TeacherLabel" layoutX="192.0" layoutY="4.0" prefHeight="58.0" prefWidth="215.0" style="-fx-font-family: Dubai; -fx-font-size: 40;" text="Add Exam" />
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+         <children>
+            <TextField fx:id="usernameTxt" layoutX="24.0" layoutY="11.0" prefHeight="30.0" prefWidth="70.0" style="-fx-border-radius: 70; -fx-border-color: black; -fx-border-width: 2;" text="ID" />
+            <Button layoutX="486.0" layoutY="26.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="98.0" text="ADD Question" />
+            <TextField layoutX="67.0" layoutY="250.0" text="Text" />
+            <TextArea layoutX="94.0" layoutY="73.0" prefHeight="38.0" prefWidth="215.0" text="שאלה 1" />
+            <TextField layoutX="337.0" layoutY="73.0" prefHeight="38.0" prefWidth="46.0" text="100" />
+            <Label fx:id="TeacherLabel1" layoutX="94.0" layoutY="23.0" prefHeight="58.0" prefWidth="215.0" style="-fx-font-family: Dubai; -fx-font-size: 20;" text="Questions" />
+            <Label fx:id="TeacherLabel11" layoutX="337.0" layoutY="23.0" prefHeight="58.0" prefWidth="215.0" style="-fx-font-family: Dubai; -fx-font-size: 20;" text="Score" />
+            <ToggleButton layoutX="383.0" layoutY="249.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="46.0" text="NO" textOverrun="CLIP" />
+            <Label fx:id="TeacherLabel111" layoutX="229.0" layoutY="233.0" prefHeight="58.0" prefWidth="165.0" style="-fx-font-family: Dubai; -fx-font-size: 12;" text="show message for students" />
+         </children></AnchorPane>
+  </items>
+</SplitPane>
