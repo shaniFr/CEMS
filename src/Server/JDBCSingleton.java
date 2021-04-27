@@ -8,14 +8,23 @@ import java.sql.SQLException;
 import java.sql.Statement;
 /**
  * 
- * @author User
- *
+ * @author Ayala Cohen
+ * 
+ * holds connection to the database
+ * singleton - there is only 1 instance of the JDBC connector
+ * 
  */
-public class JDBCSingleton {
+public class JDBCSingleton { 
+	/**
+	 * handle to jdbc
+	 */
 	private static JDBCSingleton jdbc=null;
+	/**
+	 * handle to connection
+	 */
 	private static Connection con;
 
-	private JDBCSingleton() {
+	private JDBCSingleton() { /* constructor */
 		try 
 		{
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
@@ -40,9 +49,9 @@ public class JDBCSingleton {
 	}
 	/**
 	 * 
-	 * @return
+	 * @return instance of the database connector
 	 */
-	public static JDBCSingleton getInstance() {
+	public static JDBCSingleton getInstance() { 
 		if (jdbc == null)
 			jdbc = new JDBCSingleton();
 		
