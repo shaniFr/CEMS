@@ -27,6 +27,7 @@ public class MyServer extends AbstractServer {
 	public MyServer(int port) {
 		super(port);
 		jdbc = JDBCSingleton.getInstance();
+//		System.out.println();
 	}
 
 	/**
@@ -80,7 +81,9 @@ public class MyServer extends AbstractServer {
 	 */
 	protected void clientConnected(ConnectionToClient client) {
 		/* output client details */
-		System.out.println(client.getInetAddress());
+		System.out.println("Port: " + this.getPort() + "\tHost: " + client.getInetAddress().getHostName() + "\t\tStatus: Connected");
+//		System.out.println("Port: " + this.getPort() + "\tHost: " + client.getInetAddress().getHostName() + "\tStatus: " + client.);
+
 	}
 
 	/**
@@ -91,6 +94,8 @@ public class MyServer extends AbstractServer {
 	 * @param client the connection with the client.
 	 */
 	synchronized protected void clientDisconnected(ConnectionToClient client) {
+		System.out.println("are you getting here?");
+		System.out.println("Port: " + this.getPort() + "\tHost: " + client.getInetAddress().getHostName() + "\tStatus: Disconnected");
 	}
 
 	/**
