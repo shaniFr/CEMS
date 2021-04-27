@@ -20,7 +20,7 @@ public class MyServer extends AbstractServer {
 
 	/**
 	 * constructor, instantiates the database connection
-	 * @param port server port to database
+	 * @param port 	The server port to database
 	 */
 	public MyServer(int port) {
 		super(port);
