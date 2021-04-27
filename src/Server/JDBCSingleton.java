@@ -10,21 +10,23 @@ import java.sql.Statement;
  * 
  * @author Ayala Cohen
  * 
- * holds connection to the database
+ * holds connection to the mySQL database
  * singleton - there is only 1 instance of the JDBC connector
  * 
  */
 public class JDBCSingleton { 
 	/**
-	 * handle to jdbc
+	 * handle to this class
 	 */
 	private static JDBCSingleton jdbc=null;
 	/**
 	 * handle to connection
 	 */
 	private static Connection con;
-
-	private JDBCSingleton() { /* constructor */
+	/**
+	 * constructor, called only once by getInstance() method
+	 */
+	private JDBCSingleton() { 
 		try 
 		{
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
@@ -57,32 +59,29 @@ public class JDBCSingleton {
 		
 		return jdbc;
 	}
-	/**
-	 * 
-	 * @param args
-	 */
-	public static void main(String[] args) 
-	{
-		try 
-		{
-            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            System.out.println("Driver definition succeed");
-        } catch (Exception ex) {
-        	/* handle the error*/
-        	 System.out.println("Driver definition failed");
-        	 }
-        
-        try 
-        {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/test/world?serverTimezone=IST","root","Aa123456");
-            //Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.3.68/test","root","Root");
-            System.out.println("SQL connection succeed");
-            //createTableCourses(conn);
-     	} catch (SQLException ex) 
-     	    {/* handle any errors*/
-            System.out.println("SQLException: " + ex.getMessage());
-            System.out.println("SQLState: " + ex.getSQLState());
-            System.out.println("VendorError: " + ex.getErrorCode());
-            }
-   	}
+
+//	public static void main(String[] args) 
+//	{
+//		try 
+//		{
+//            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+//            System.out.println("Driver definition succeed");
+//        } catch (Exception ex) {
+//        	/* handle the error*/
+//        	 System.out.println("Driver definition failed");
+//        	 }
+//        
+//        try 
+//        {
+//            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/test/world?serverTimezone=IST","root","Aa123456");
+//            //Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.3.68/test","root","Root");
+//            System.out.println("SQL connection succeed");
+//            //createTableCourses(conn);
+//     	} catch (SQLException ex) 
+//     	    {/* handle any errors*/
+//            System.out.println("SQLException: " + ex.getMessage());
+//            System.out.println("SQLState: " + ex.getSQLState());
+//            System.out.println("VendorError: " + ex.getErrorCode());
+//            }
+//   	}
 }

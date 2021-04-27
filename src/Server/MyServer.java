@@ -5,8 +5,8 @@ import ocsf.server.ConnectionToClient;
 
 /**
  * 
- * @author User
- *
+ * @author Ayala Cohen
+ * arbitrator between clients & database
  */
 public class MyServer extends AbstractServer {
 	/**
@@ -19,9 +19,8 @@ public class MyServer extends AbstractServer {
 	final public static int DEFAULT_PORT = 5555;
 
 	/**
-	 * Constructs an instance of MyServer.
-	 * 
-	 * @param port
+	 * constructor, instantiates the database connection
+	 * @param port server port to database
 	 */
 	public MyServer(int port) {
 		super(port);
