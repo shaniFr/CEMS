@@ -1,26 +1,28 @@
 package Server;
 
+import java.sql.SQLException;
+
 import ocsf.server.AbstractServer;
 import ocsf.server.ConnectionToClient;
 
 /**
  * 
- * @author Ayala Cohen
- * arbitrator between clients & database
+ * @author Ayala Cohen arbitrator between clients & database
  */
 public class MyServer extends AbstractServer {
 	/**
 	 * mySQL connection
 	 */
 	JDBCSingleton jdbc;
-	/**
-	 * The default port to listen on.
-	 */
-	final public static int DEFAULT_PORT = 5555;
+//	/**
+//	 * The default port to listen on.
+//	 */
+//	final public static int DEFAULT_PORT = 5555;
 
 	/**
 	 * constructor, instantiates the database connection
-	 * @param port 	The server port to database
+	 * 
+	 * @param port The server port to database
 	 */
 	public MyServer(int port) {
 		super(port);
@@ -36,23 +38,38 @@ public class MyServer extends AbstractServer {
 	@Override
 	protected void handleMessageFromClient(Object msg, ConnectionToClient client) {
 		/* get update duration for exam from client */
-		
+
 		String newDuration, ExamID, str; /* new exam duration in minutes & exam ID */
+		char op;
 		int temp;
-		
-		if (!(msg instanceof String)) 
+
+		if (!(msg instanceof String)) {
 			System.out.println("Server : Invalid message from client !!");
-		
-		str = (String)msg;
-		ExamID = str.substring(0, 6); /* ExamID is 6 digit long */
-		newDuration = ExamID.substring(6);
-		
-		temp = Integer.parseInt(newDuration);
-		if (temp < 0)
-			System.out.println("Server : Invalid new duration from client !!");
-		
-		/* update duration in db */
-		jdbc.updateQuery(ExamID, newDuration);
+			return;
+		}
+
+		str = (String) msg;
+		op = str.charAt(0);
+		try {
+			switch (op) {
+
+			case 'A':
+				ExamID = str.substring(1, 7); /* ExamID is 6 digit long */
+				newDuration = ExamID.substring(7);
+
+				temp = Integer.parseInt(newDuration);
+				if (temp < 0)
+					System.out.println("Server : Invalid new duration from client !!");
+
+				/* update duration in db */
+				jdbc.updateQuery(ExamID, newDuration);
+			case 'B':
+				client.sendToClient(this.jdbc.selectQuery());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 
 	/**
@@ -62,6 +79,8 @@ public class MyServer extends AbstractServer {
 	 * @param client the connection connected to the client.
 	 */
 	protected void clientConnected(ConnectionToClient client) {
+		/* output client details */
+		System.out.println(client.getInetAddress());
 	}
 
 	/**
@@ -103,17 +122,19 @@ public class MyServer extends AbstractServer {
 		try {
 			port = Integer.parseInt(args[0]); // Get port from command line
 		} catch (Throwable t) {
-			port = DEFAULT_PORT; // Set port to 5555
+			port = 5555; // Set port to 5555
 		}
 
 		MyServer sv = new MyServer(port);
-		
+
 		try {
 			sv.listen(); // Start listening for connections
 		} catch (Exception ex) {
 			System.out.println("ERROR - Could not listen for clients!");
 		}
-//		sv.jdbc.updateQuery("123456", "200");
+		sv.jdbc.updateQuery("123456", "200");
+		sv.jdbc.selectQuery();
+		
 	}
 
 }

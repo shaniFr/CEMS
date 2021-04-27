@@ -1,19 +1,34 @@
 package Client;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
+import Data.Exam;
 import ocsf.client.*;
 
 public class MyClient extends AbstractClient {
-
+	private int clientID;
+	private static int i=0;
+	
 	public MyClient(String host, int port) {
 		super(host, port);
-		// TODO Auto-generated constructor stub
+		i++;
+		clientID=i;
 	}
-
+	
+//	public void receivedMessageFromServer(Object msg) {
+//		
+//	}
 	@Override
 	protected void handleMessageFromServer(Object msg) {
-		// TODO Auto-generated method stub
+		ArrayList<Exam> examlist;
+		
+		if (!(msg instanceof ArrayList<?>)) {
+			System.out.println("Client : Invalid message from server !!");
+			return;
+	}
+		examlist = (ArrayList<Exam>)msg;
+		
 
 	}
 

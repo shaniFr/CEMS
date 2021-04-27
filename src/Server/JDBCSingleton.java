@@ -1,6 +1,9 @@
 package Server;
 
 import java.sql.*;
+import java.util.ArrayList;
+
+import Data.Exam;
 
 //import java.sql.Connection;
 //import java.sql.DriverManager;
@@ -62,12 +65,12 @@ public class JDBCSingleton {
 		return jdbc;
 	}
 
-/**
- * 
- * @param id		Exam ID that will have its duration updated
- * @param newdur	New duration for given exam ID
- * @return
- */
+	/**
+	 * 
+	 * @param id     Exam ID that will have its duration updated
+	 * @param newdur New duration for given exam ID
+	 * @return
+	 */
 	public boolean updateQuery(String id, String newdur) {
 		int duration = Integer.parseInt(newdur);
 		Statement stmt;
@@ -80,5 +83,41 @@ public class JDBCSingleton {
 			return false; /* update database unsuccessful */
 		}
 		return true;
+	}
+
+
+
+	public ArrayList<Exam> selectQuery() {
+		Statement stmt;
+		ResultSet rs;
+		Exam newExam;
+		ArrayList<Exam> examlist = new ArrayList<>();
+
+		String id, sub, cour, scores;
+		int dur;
+		try {
+			stmt = con.createStatement();
+			rs = stmt.executeQuery("select * from test");
+			while (rs.next()) {
+				// get values from database
+				id = rs.getString(1);
+				dur = rs.getInt(4);
+				sub = rs.getString(2);
+				cour = rs.getString(3);
+				scores = rs.getString(5);
+
+				newExam = new Exam(id, dur, sub, cour, scores);
+				examlist.add(newExam);
+			}
+			
+			rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+//		System.out.println(examlist.toString());
+		return examlist;
+
+		
 	}
 }
