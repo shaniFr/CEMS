@@ -36,7 +36,23 @@ public class MyServer extends AbstractServer {
 	@Override
 	protected void handleMessageFromClient(Object msg, ConnectionToClient client) {
 		/* get update duration for exam from client */
-
+		
+		String newDuration, ExamID, str; /* new exam duration in minutes & exam ID */
+		int temp;
+		
+		if (!(msg instanceof String)) 
+			System.out.println("Server : Invalid message from client !!");
+		
+		str = (String)msg;
+		ExamID = str.substring(0, 6); /* ExamID is 6 digit long */
+		newDuration = ExamID.substring(6);
+		
+		temp = Integer.parseInt(newDuration);
+		if (temp < 0)
+			System.out.println("Server : Invalid new duration from client !!");
+		
+		/* update duration in db */
+		jdbc.updateQuery(ExamID, newDuration);
 	}
 
 	/**
@@ -91,12 +107,13 @@ public class MyServer extends AbstractServer {
 		}
 
 		MyServer sv = new MyServer(port);
-
+		
 		try {
 			sv.listen(); // Start listening for connections
 		} catch (Exception ex) {
 			System.out.println("ERROR - Could not listen for clients!");
 		}
+//		sv.jdbc.updateQuery("123456", "200");
 	}
 
 }
