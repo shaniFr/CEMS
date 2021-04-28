@@ -11,8 +11,8 @@
   <items>
     <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="530.0">
          <children>
-            <Label fx:id="ExamsLabel" layoutX="212.0" layoutY="3.0" style="-fx-font-family: Dubai; -fx-font-size: 40; -fx-text-fill: purple;" text="Exams" />
-            <Avatar layoutX="47.0" layoutY="21.0">
+            <Label fx:id="ExamsLabel" layoutX="212.0" layoutY="-1.0" style="-fx-font-family: Dubai; -fx-font-size: 40; -fx-text-fill: purple;" text="Exams" />
+            <Avatar layoutX="47.0" layoutY="17.0">
                <image>
                   <Image url="@avatar.png" />
                </image></Avatar>
