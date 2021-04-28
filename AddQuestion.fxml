@@ -38,7 +38,8 @@
             </Text>
             <ChoiceBox fx:id="CorrectAnBtn" layoutX="391.0" layoutY="113.0" prefHeight="28.0" prefWidth="125.0" />
             <Button fx:id="QuestionBackBtn" layoutX="14.0" layoutY="286.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="92.0" style="-fx-background-color: light blue; -fx-text-fill: orange; -fx-border-radius: 70; -fx-border-color: purple; -fx-border-width: 2; -fx-font-family: Dubai Light; -fx-font-size: 21;" text="Back" />
-            <TextField fx:id="QuestionId" layoutX="422.0" layoutY="14.0" prefHeight="25.0" prefWidth="63.0" style="-fx-font-family: Dubai Light; -fx-border-radius: 70; -fx-border-color: purple; -fx-border-width: 2; -fx-font-size: 14;" text="ID" />
+            <TextField fx:id="QuestionBankId" layoutX="424.0" layoutY="14.0" prefHeight="38.0" prefWidth="92.0" style="-fx-font-family: Dubai Light; -fx-border-radius: 70; -fx-border-color: purple; -fx-border-width: 2; -fx-font-size: 14;" text="Bank ID" />
+            <TextField fx:id="QuestionId" layoutX="322.0" layoutY="14.0" prefHeight="38.0" prefWidth="92.0" style="-fx-font-family: Dubai Light; -fx-border-radius: 70; -fx-border-color: purple; -fx-border-width: 2; -fx-font-size: 14;" text="Question ID" />
          </children></AnchorPane>
   </items>
 </fx:root>

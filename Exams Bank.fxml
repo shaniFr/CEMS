@@ -29,7 +29,7 @@
                   <Image url="@add.jpeg" />
                </image>
             </Avatar>
-            <Avatar id="DeletQuestionBankBtn" fx:id="DeletExamBankBtn" accessibleRole="BUTTON" layoutX="387.0" layoutY="14.0">
+            <Avatar id="DeletQuestionBankBtn" fx:id="DeletExamBankBtn" accessibleRole="BUTTON" layoutX="389.0" layoutY="14.0">
                <image>
                   <Image url="@delete.jpeg" />
                </image>
@@ -39,18 +39,14 @@
                   <Image url="@edit.jpeg" />
                </image>
             </Avatar>
-            <Text fx:id="Exams" layoutX="43.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Dubai Light; -fx-font-size: 18; -fx-fill: orange;" text="Exams:" underline="true" wrappingWidth="81.03514862060547">
+            <Text fx:id="Exams" layoutX="44.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Dubai Light; -fx-font-size: 18; -fx-fill: orange;" text="Exam Banks:" underline="true" wrappingWidth="104.03514862060547">
                <font>
                   <Font size="19.0" />
                </font>
             </Text>
-            <Text layoutX="21.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Dubai Light; -fx-font-size: 18; -fx-fill: orange;" text="1.">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Text>
             <Button fx:id="ExamBankBtn" layoutX="14.0" layoutY="288.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="92.0" style="-fx-background-color: light blue; -fx-text-fill: orange; -fx-border-radius: 70; -fx-border-color: purple; -fx-border-width: 2; -fx-font-family: Dubai Light; -fx-font-size: 21;" text="Back" />
-            <TextField fx:id="Exam1" layoutX="43.0" layoutY="54.0" prefHeight="26.0" prefWidth="262.0" style="-fx-font-family: Dubai Light; -fx-border-radius: 70; -fx-border-color: purple; -fx-border-width: 2; -fx-font-size: 14;" text="name of exam 1" />
+            <TextField fx:id="ExamBankId" layoutX="28.0" layoutY="61.0" prefHeight="38.0" prefWidth="92.0" style="-fx-font-family: Dubai Light; -fx-border-radius: 70; -fx-border-color: purple; -fx-border-width: 2; -fx-font-size: 14;" text="Bank ID" />
+            <TextField fx:id="ExamName" layoutX="137.0" layoutY="61.0" prefHeight="38.0" prefWidth="171.0" style="-fx-font-family: Dubai Light; -fx-border-radius: 70; -fx-border-color: purple; -fx-border-width: 2; -fx-font-size: 14;" text="Exam bank name" />
          </children></AnchorPane>
   </items>
 </fx:root>

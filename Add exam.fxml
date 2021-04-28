@@ -24,7 +24,6 @@
          </children></AnchorPane>
     <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="530.0">
          <children>
-            <TextField fx:id="ExamId" layoutX="26.0" layoutY="13.0" prefHeight="25.0" prefWidth="63.0" style="-fx-font-family: Dubai Light; -fx-border-radius: 70; -fx-border-color: purple; -fx-border-width: 2; -fx-font-size: 14;" text="ID" />
             <Avatar id="AddQuestionBtn" fx:id="AddExamBtn" accessibleRole="BUTTON" layoutX="480.0" layoutY="14.0">
                <image>
                   <Image url="@add.jpeg" />
@@ -35,13 +34,15 @@
                   <Font size="19.0" />
                </font>
             </Text>
-            <TextField fx:id="Question1" layoutX="26.0" layoutY="73.0" prefHeight="39.0" prefWidth="206.0" style="-fx-font-family: Dubai Light; -fx-border-radius: 70; -fx-border-color: purple; -fx-border-width: 2; -fx-font-size: 14;" text="Question 1" />
-            <TextField fx:id="Score" layoutX="265.0" layoutY="73.0" prefHeight="25.0" prefWidth="63.0" style="-fx-font-family: Dubai Light; -fx-border-radius: 70; -fx-border-color: purple; -fx-border-width: 2; -fx-font-size: 14;" text="100" />
+            <TextField fx:id="Question1" layoutX="138.0" layoutY="70.0" prefHeight="39.0" prefWidth="206.0" style="-fx-font-family: Dubai Light; -fx-border-radius: 70; -fx-border-color: purple; -fx-border-width: 2; -fx-font-size: 14;" text="Question 1" />
+            <TextField fx:id="Score" layoutX="366.0" layoutY="70.0" prefHeight="25.0" prefWidth="63.0" style="-fx-font-family: Dubai Light; -fx-border-radius: 70; -fx-border-color: purple; -fx-border-width: 2; -fx-font-size: 14;" text="100" />
             <TextField fx:id="CommentTxt" layoutX="26.0" layoutY="201.0" prefHeight="39.0" prefWidth="206.0" style="-fx-font-family: Dubai Light; -fx-border-radius: 70; -fx-border-color: purple; -fx-border-width: 2; -fx-font-size: 14;" text="Comment" />
             <Button fx:id="SaveBtn" layoutX="113.0" layoutY="288.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="92.0" style="-fx-background-color: light blue; -fx-text-fill: orange; -fx-border-radius: 70; -fx-border-color: purple; -fx-border-width: 2; -fx-font-family: Dubai Light; -fx-font-size: 21;" text="Save" />
             <Button fx:id="QuestionBackBtn" layoutX="14.0" layoutY="288.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="92.0" style="-fx-background-color: light blue; -fx-text-fill: orange; -fx-border-radius: 70; -fx-border-color: purple; -fx-border-width: 2; -fx-font-family: Dubai Light; -fx-font-size: 21;" text="Back" />
             <RadioButton fx:id="YesRadio" layoutX="241.0" layoutY="172.0" mnemonicParsing="false" text="Yes" />
             <RadioButton fx:id="NoRadio" layoutX="297.0" layoutY="172.0" mnemonicParsing="false" text="No" />
+            <TextField fx:id="QuestionId" layoutX="26.0" layoutY="70.0" prefHeight="38.0" prefWidth="92.0" style="-fx-font-family: Dubai Light; -fx-border-radius: 70; -fx-border-color: purple; -fx-border-width: 2; -fx-font-size: 14;" text="Question ID" />
+            <TextField fx:id="ExamBankId" layoutX="26.0" layoutY="13.0" prefHeight="38.0" prefWidth="92.0" style="-fx-font-family: Dubai Light; -fx-border-radius: 70; -fx-border-color: purple; -fx-border-width: 2; -fx-font-size: 14;" text="Bank ID" />
          </children></AnchorPane>
   </items>
 </fx:root>
