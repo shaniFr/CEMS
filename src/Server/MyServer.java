@@ -71,7 +71,7 @@ public class MyServer extends AbstractServer {
 					client.sendToClient("X"); /* update unsuccessful */
 				break;
 			case 'D': /* client says he wants to see the database */
-				System.out.println("got a d");
+//				System.out.println("got a d");
 				client.sendToClient("S" + this.jdbc.selectQueryToString());
 				break;
 			case 'C': /* client says he is disconnected */

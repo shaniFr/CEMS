@@ -43,7 +43,7 @@ public class JDBCSingleton {
 
 		try {
 			this.con = DriverManager.getConnection("jdbc:mysql://localhost/cems?serverTimezone=IST", "root",
-					"Aa123456");
+					"123456");
 			System.out.println(con);
 			System.out.println("SQL connection succeed");
 		} catch (SQLException ex) {/* handle any errors */

@@ -16,10 +16,10 @@ public class MyClient extends AbstractClient {
 
 	@Override
 	protected void handleMessageFromServer(Object msg) {
-//		ArrayList<Exam> examlist;
+		ArrayList<Exam> examlist;
 		String str;
 		char op;
-		System.out.println("anybody home?");
+//		System.out.println("anybody home?");
 		System.out.println(this.getClass().getName() + " handle msg from server received");
 		if (!(msg instanceof String)) {
 			System.out.println("Client : Invalid message from server !!");
@@ -34,8 +34,8 @@ public class MyClient extends AbstractClient {
 		case 'Y':
 			System.out.println("client is happy :)");
 			break;
-		case 'S':	/* return select output to UI */
-			ViewBoundary.showMessage(decodeMessageFromServer(str)); 
+		case 'S': /* return select output to UI */
+			ViewBoundary.loadData(decodeMessageFromServer(str));
 			break;
 
 		}
@@ -47,22 +47,19 @@ public class MyClient extends AbstractClient {
 		String[] decodedMsg;
 		String temp = str.substring(1);
 		decodedMsg = temp.split("-");
-		int i=0;
-		
-		for (int j=0;j<decodedMsg.length/5 ; j++)
-		{
-			Exam ex = new Exam("","","",0,"");
+		int i = 0;
+
+		for (int j = 0; j < decodedMsg.length / 5; j++) {
+			Exam ex = new Exam("", "", "", 0, "");
 			ex.setExamID(decodedMsg[i]);
-			ex.setSubject(decodedMsg[i+1]);
-			ex.setCourse(decodedMsg[i+2]);
-			ex.setDuration(Integer.parseInt(decodedMsg[i+3]));
-			ex.setScores(decodedMsg[i+4]);
-			i = i+5;
+			ex.setSubject(decodedMsg[i + 1]);
+			ex.setCourse(decodedMsg[i + 2]);
+			ex.setDuration(Integer.parseInt(decodedMsg[i + 3]));
+			ex.setScores(decodedMsg[i + 4]);
+			i = i + 5;
 			examTable.add(ex);
-			
 		}
 		return examTable;
-		
 	}
 
 	public void handleMessageFromClientUI(Object message) {

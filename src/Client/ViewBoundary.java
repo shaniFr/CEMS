@@ -21,7 +21,7 @@ public class ViewBoundary {
 	private TableView<?> tblView;
 
 	@FXML
-	private TableColumn<?, ?> ExamID;
+	private static TableColumn<?, ?> ExamID;
 
 	@FXML
 	private TableColumn<?, ?> Subject;
@@ -40,11 +40,19 @@ public class ViewBoundary {
 
 		Scene scene = new Scene(root);
 		// scene.getStylesheets().add(getClass().getResource("/gui/AcademicFrame.css").toExternalForm());
-		ExamID.setCellValueFactory(ArrayList<Exam>("ExamID"));
 
 		primaryStage.setTitle("View DataBase");
 		primaryStage.setScene(scene);
 
 		primaryStage.show();
+	}
+
+	public static void loadData(ArrayList<Exam> decodeMessageFromServer) {
+//		ExamID.setCellValueFactory(decodeMessageFromServer.g);
+		ArrayList<Exam> examTable = new ArrayList<>();
+		String[] decodedMsg = null;
+		for (int i = 0; i < decodedMsg.length / 5; i++) {
+			decodeMessageFromServer.get(i);
+		}
 	}
 }
