@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import com.gluonhq.charm.glisten.control.Avatar?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <SplitPane dividerPositions="0.16867469879518074" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
   <items>
@@ -13,9 +19,41 @@
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
          <children>
-            <Button fx:id="AddQuestionbtn" layoutX="447.0" layoutY="14.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="138.0" text="Create New Question" />
-            <Button fx:id="EditQuestiobBtn" layoutX="449.0" layoutY="64.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="138.0" text=" Edit Question " />
-            <Button fx:id="DeletQuestiobBtn" layoutX="449.0" layoutY="112.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="138.0" text="Delet Question" />
+            <Avatar id="AddQuestionBtn" fx:id="AddQuesBtn" accessibleRole="BUTTON" layoutX="538.0" layoutY="14.0">
+               <image>
+                  <Image url="@הורדה.png" />
+               </image>
+            </Avatar>
+            <Avatar layoutX="248.0" layoutY="125.0" />
+            <Avatar layoutX="155.0" layoutY="94.0" />
+            <Avatar id="DeletQuestionBankBtn" fx:id="DeletQuesBtn" accessibleRole="BUTTON" layoutX="489.0" layoutY="14.0">
+               <image>
+                  <Image url="@DeleteDustbin-512.png" />
+               </image>
+            </Avatar>
+            <Avatar id="EditQuestionBankBtn" fx:id="EditQuesBtn" accessibleRole="BUTTON" layoutX="441.0" layoutY="14.0">
+               <image>
+                  <Image url="@images.png" />
+               </image>
+            </Avatar>
+            <TextField layoutX="42.0" layoutY="63.0" prefHeight="36.0" prefWidth="248.0" text="3+1=?">
+               <cursor>
+                  <Cursor fx:constant="H_RESIZE" />
+               </cursor>
+               <effect>
+                  <Glow />
+               </effect>
+            </TextField>
+            <Text layoutX="42.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valid Question" wrappingWidth="134.03514862060547">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Text>
+            <Text layoutX="14.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1.">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
          </children></AnchorPane>
   </items>
 </SplitPane>
