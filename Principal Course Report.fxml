@@ -16,7 +16,7 @@
       <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="530.0">
          <children>
             <Label fx:id="PrincipalCourseReportLabel" layoutX="139.0" layoutY="-1.0" style="-fx-font-family: Dubai; -fx-font-size: 40; -fx-text-fill: purple;" text="Course Reports" />
-            <Avatar fx:id="Logo" layoutX="38.0" layoutY="17.0">
+            <Avatar fx:id="Logo" layoutX="46.0" layoutY="17.0">
                <image>
                   <Image url="@avatar.png" />
                </image>
@@ -37,7 +37,7 @@
             </BarChart>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="15.0" layoutX="494.0" layoutY="301.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: blue;" width="15.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="15.0" layoutX="494.0" layoutY="324.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: green;" width="15.0" />
-            <Button fx:id="CourseReportsBackBtn" layoutX="14.0" layoutY="293.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="54.0" prefWidth="126.0" style="-fx-background-color: light blue; -fx-text-fill: orange; -fx-border-radius: 70; -fx-border-color: purple; -fx-border-width: 2; -fx-font-family: dubai light; -fx-font-size: 21;" text="Back" />
+            <Button fx:id="CourseReportsBackBtn" layoutX="14.0" layoutY="293.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="54.0" prefWidth="126.0" style="-fx-background-color: light blue; -fx-text-fill: orange; -fx-border-radius: 70; -fx-border-color: purple; -fx-border-image-width: 2; -fx-font-family: dubai light; -fx-font-size: 21;" text="Back" />
          </children>
       </AnchorPane>
    </items>

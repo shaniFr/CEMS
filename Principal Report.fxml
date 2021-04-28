@@ -14,7 +14,7 @@
       <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="530.0">
          <children>
             <Label fx:id="ReportLabel" layoutX="191.0" layoutY="-1.0" prefHeight="58.0" prefWidth="148.0" style="-fx-font-family: Dubai; -fx-font-size: 40; -fx-text-fill: purple;" text="Reports" />
-            <Avatar fx:id="Logo" layoutX="40.0" layoutY="17.0">
+            <Avatar fx:id="Logo" layoutX="46.0" layoutY="17.0">
                <image>
                   <Image url="@avatar.png" />
                </image>
@@ -23,7 +23,7 @@
       </AnchorPane>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="530.0">
          <children>
-            <Button fx:id="CourseReportPrincipalBtn" layoutX="331.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="54.0" prefWidth="126.0" style="-fx-background-color: light blue; -fx-text-fill: orange; -fx-border-radius: 70; -fx-border-color: purple; -fx-border-width: 2; -fx-font-family: dubai light; -fx-font-size: 21;" text="Get Report" />
+            <Button fx:id="CourseReportPrincipalBtn" layoutX="331.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="54.0" prefWidth="126.0" style="-fx-background-color: light blue; -fx-text-fill: orange; -fx-border-radius: 70; -fx-border-color: purple; -fx-border-image-width: 2; -fx-font-family: dubai light; -fx-font-size: 21;" text="Get Report" />
             <Text fx:id="Course" layoutX="23.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Dubai Light; -fx-font-size: 18; -fx-fill: orange;" text="Course" wrappingWidth="51.2760009765625" />
             <ChoiceBox fx:id="CourseList" layoutX="84.0" layoutY="65.0" prefWidth="150.0" />
             <Label fx:id="ReportTeacherLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="100.0" style="-fx-font-family: Dubai; -fx-font-size: 25; -fx-text-fill: orange;" text="Report for Teacher:" textAlignment="CENTER" underline="true" wrapText="true" />
@@ -33,9 +33,9 @@
             <ChoiceBox fx:id="TeacherList" layoutX="84.0" layoutY="158.0" prefWidth="150.0" />
             <Text fx:id="Student" layoutX="18.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Dubai Light; -fx-font-size: 18; -fx-fill: orange;" text="Student" wrappingWidth="61.27600282430649" />
             <ChoiceBox fx:id="StudentList" layoutX="84.0" layoutY="248.0" prefWidth="150.0" />
-            <Button fx:id="TeacherReportPrincipalBtn" layoutX="331.0" layoutY="144.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="54.0" prefWidth="126.0" style="-fx-background-color: light blue; -fx-text-fill: orange; -fx-border-radius: 70; -fx-border-color: purple; -fx-border-width: 2; -fx-font-family: dubai light; -fx-font-size: 21;" text="Get Report" />
-            <Button fx:id="StudentReportPrincipalBtn" layoutX="331.0" layoutY="234.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="54.0" prefWidth="126.0" style="-fx-background-color: light blue; -fx-text-fill: orange; -fx-border-radius: 70; -fx-border-color: purple; -fx-border-width: 2; -fx-font-family: dubai light; -fx-font-size: 21;" text="Get Report" />
-            <Button fx:id="ReportPrincipalBackBtn" layoutX="8.0" layoutY="296.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="54.0" prefWidth="126.0" style="-fx-background-color: light blue; -fx-text-fill: orange; -fx-border-radius: 70; -fx-border-color: purple; -fx-border-width: 2; -fx-font-family: dubai light; -fx-font-size: 21;" text="Back" />
+            <Button fx:id="TeacherReportPrincipalBtn" layoutX="331.0" layoutY="144.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="54.0" prefWidth="126.0" style="-fx-background-color: light blue; -fx-text-fill: orange; -fx-border-radius: 70; -fx-border-color: purple; -fx-border-image-width: 2; -fx-font-family: dubai light; -fx-font-size: 21;" text="Get Report" />
+            <Button fx:id="StudentReportPrincipalBtn" layoutX="331.0" layoutY="234.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="54.0" prefWidth="126.0" style="-fx-background-color: light blue; -fx-text-fill: orange; -fx-border-radius: 70; -fx-border-color: purple; -fx-border-image-width: 2; -fx-font-family: dubai light; -fx-font-size: 21;" text="Get Report" />
+            <Button fx:id="ReportPrincipalBackBtn" layoutX="8.0" layoutY="296.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="54.0" prefWidth="126.0" style="-fx-background-color: light blue; -fx-text-fill: orange; -fx-border-radius: 70; -fx-border-color: purple; -fx-border-image-width: 2; -fx-font-family: dubai light; -fx-font-size: 21;" text="Back" />
          </children>
       </AnchorPane>
    </items>

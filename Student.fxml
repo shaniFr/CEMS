@@ -11,17 +11,17 @@
   <items>
     <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="530.0">
          <children>
-            <Label fx:id="TeacherLabel" layoutX="191.0" layoutY="-1.0" prefHeight="58.0" prefWidth="148.0" style="-fx-font-family: Dubai; -fx-font-size: 40; -fx-text-fill: purple;" text="Student" />
-            <Avatar layoutX="40.0" layoutY="17.0">
+            <Label fx:id="TeacherLabel" layoutX="191.0" layoutY="6.0" prefHeight="58.0" prefWidth="148.0" style="-fx-font-family: Dubai; -fx-font-size: 40; -fx-text-fill: purple;" text="Student" />
+            <Avatar layoutX="48.0" layoutY="17.0">
                <image>
                   <Image url="@avatar.png" />
                </image></Avatar>
          </children></AnchorPane>
     <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="530.0">
          <children>
-            <Button fx:id="StudentGradeBtn" layoutX="164.0" layoutY="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="202.0" style="-fx-background-color: light blue; -fx-text-fill: orange; -fx-border-radius: 70; -fx-border-color: purple; -fx-border-width: 2; -fx-font-family: dubai light; -fx-font-size: 21;" text="View Grades" />
-            <Button fx:id="RetrieveCoptBtn" layoutX="164.0" layoutY="199.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="202.0" style="-fx-background-color: light blue; -fx-text-fill: orange; -fx-border-radius: 70; -fx-border-color: purple; -fx-border-width: 2; -fx-font-family: dubai light; -fx-font-size: 21;" text="Retrieve copy  " />
-            <Button fx:id="ExamniationBtn" layoutX="164.0" layoutY="129.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="202.0" style="-fx-background-color: light blue; -fx-text-fill: orange; -fx-border-radius: 70; -fx-border-color: purple; -fx-border-width: 2; -fx-font-family: dubai light; -fx-font-size: 21;" text="Examination" />
+            <Button fx:id="StudentGradeBtn" layoutX="164.0" layoutY="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="202.0" style="-fx-background-color: light blue; -fx-text-fill: orange; -fx-border-radius: 70; -fx-border-color: purple; -fx-border-image-width: 2; -fx-font-family: dubai light; -fx-font-size: 21;" text="View Grades" />
+            <Button fx:id="RetrieveCoptBtn" layoutX="164.0" layoutY="199.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="202.0" style="-fx-background-color: light blue; -fx-text-fill: orange; -fx-border-radius: 70; -fx-border-color: purple; -fx-border-image-width: 2; -fx-font-family: dubai light; -fx-font-size: 21;" text="Retrieve copy  " />
+            <Button fx:id="ExamniationBtn" layoutX="164.0" layoutY="129.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="202.0" style="-fx-background-color: light blue; -fx-text-fill: orange; -fx-border-radius: 70; -fx-border-color: purple; -fx-border-image-width: 2; -fx-font-family: dubai light; -fx-font-size: 21;" text="Examination" />
          </children>
       </AnchorPane>
   </items>
