@@ -1,7 +1,9 @@
 package Server;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
+import Data.Exam;
 import ocsf.server.AbstractServer;
 import ocsf.server.ConnectionToClient;
 
@@ -40,10 +42,11 @@ public class MyServer extends AbstractServer {
 	protected void handleMessageFromClient(Object msg, ConnectionToClient client) {
 		/* get update duration for exam from client */
 
-		String newDuration, ExamID, str; /* new exam duration in minutes & exam ID */
+		String newDuration, ExamID, str, tmp; /* new exam duration in minutes & exam ID */
 		char op;
 		int temp;
 
+		System.out.println(this.getClass().getName() + msg);
 		if (!(msg instanceof String)) {
 			System.out.println("Server : Invalid message from client !!");
 			return;
@@ -54,18 +57,26 @@ public class MyServer extends AbstractServer {
 		try {
 			switch (op) {
 
-			case 'A':
+			case 'U': /* client says he wants to update the database */
 				ExamID = str.substring(1, 7); /* ExamID is 6 digit long */
 				newDuration = ExamID.substring(7);
-
 				temp = Integer.parseInt(newDuration);
-				if (temp < 0)
+				if (temp < 0) {
 					System.out.println("Server : Invalid new duration from client !!");
-
-				/* update duration in db */
-				jdbc.updateQuery(ExamID, newDuration);
-			case 'B':
-				client.sendToClient(this.jdbc.selectQuery());
+					break;
+				}
+				if (jdbc.updateQuery(ExamID, newDuration)) /* update duration in database */
+					client.sendToClient("V"); /* update successful */
+				else
+					client.sendToClient("X"); /* update unsuccessful */
+				break;
+			case 'D': /* client says he wants to see the database */
+				System.out.println("got a d");
+				client.sendToClient("S" + this.jdbc.selectQueryToString());
+				break;
+			case 'C': /* client says he is disconnected */
+				updateClientDetails(this.getPort(), client.getInetAddress().getHostName(), "Disconnected");
+				break;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -81,9 +92,11 @@ public class MyServer extends AbstractServer {
 	 */
 	protected void clientConnected(ConnectionToClient client) {
 		/* output client details */
-		System.out.println("Port: " + this.getPort() + "\tHost: " + client.getInetAddress().getHostName() + "\t\tStatus: Connected");
-//		System.out.println("Port: " + this.getPort() + "\tHost: " + client.getInetAddress().getHostName() + "\tStatus: " + client.);
+		updateClientDetails(this.getPort(), client.getInetAddress().getHostName(), "Connected");
+	}
 
+	private void updateClientDetails(int port, String hostName, String status) {
+		System.out.println("Port: " + port + "\tHost: " + hostName + "\t\tStatus: " + status);
 	}
 
 	/**
@@ -95,7 +108,8 @@ public class MyServer extends AbstractServer {
 	 */
 	synchronized protected void clientDisconnected(ConnectionToClient client) {
 		System.out.println("are you getting here?");
-		System.out.println("Port: " + this.getPort() + "\tHost: " + client.getInetAddress().getHostName() + "\tStatus: Disconnected");
+		System.out.println("Port: " + this.getPort() + "\tHost: " + client.getInetAddress().getHostName()
+				+ "\tStatus: Disconnected");
 	}
 
 	/**
@@ -137,9 +151,9 @@ public class MyServer extends AbstractServer {
 		} catch (Exception ex) {
 			System.out.println("ERROR - Could not listen for clients!");
 		}
-		sv.jdbc.updateQuery("123456", "200");
-		sv.jdbc.selectQuery();
-		
+//		sv.jdbc.updateQuery("123456", "200");
+//		sv.jdbc.selectQuery();
+
 	}
 
 }

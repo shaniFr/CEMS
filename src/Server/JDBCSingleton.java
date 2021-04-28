@@ -86,14 +86,11 @@ public class JDBCSingleton {
 	}
 
 
-
-	public ArrayList<Exam> selectQuery() {
+	public String selectQueryToString() {
 		Statement stmt;
 		ResultSet rs;
-		Exam newExam;
-		ArrayList<Exam> examlist = new ArrayList<>();
-
-		String id, sub, cour, scores;
+		String id, sub, cour, scores, result="";
+		
 		int dur;
 		try {
 			stmt = con.createStatement();
@@ -101,13 +98,11 @@ public class JDBCSingleton {
 			while (rs.next()) {
 				// get values from database
 				id = rs.getString(1);
-				dur = rs.getInt(4);
 				sub = rs.getString(2);
 				cour = rs.getString(3);
+				dur = rs.getInt(4);
 				scores = rs.getString(5);
-
-				newExam = new Exam(id, dur, sub, cour, scores);
-				examlist.add(newExam);
+				result += id + "-" + sub + "-" + cour + "-" + dur + "-" + scores +"-";
 			}
 			
 			rs.close();
@@ -115,9 +110,39 @@ public class JDBCSingleton {
 			e.printStackTrace();
 		}
 		
-//		System.out.println(examlist.toString());
-		return examlist;
-
+		return result;
 		
 	}
+//	public ArrayList<Exam> selectQuery() {
+//		Statement stmt;
+//		ResultSet rs;
+//		Exam newExam;
+//		ArrayList<Exam> examlist = new ArrayList<>();
+//		String id, sub, cour, scores;
+//		
+//		int dur;
+//		try {
+//			stmt = con.createStatement();
+//			rs = stmt.executeQuery("select * from test");
+//			while (rs.next()) {
+//				// get values from database
+//				id = rs.getString(1);
+//				sub = rs.getString(2);
+//				cour = rs.getString(3);
+//				dur = rs.getInt(4);
+//				scores = rs.getString(5);
+//
+//				newExam = new Exam(id, dur, sub, cour, scores);
+//				examlist.add(newExam);
+//			}
+//			
+//			rs.close();
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//		
+//		return examlist;
+//
+//		
+//	}
 }
