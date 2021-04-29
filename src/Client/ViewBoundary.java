@@ -48,7 +48,7 @@ public class ViewBoundary implements Initializable  {
 	static ObservableList<Exam> data;
 
 	/* converts Exam array list to Observable Exam array list */
-	public void getExams(ArrayList<Exam> exams) {
+	public static void getExams(ArrayList<Exam> exams) {
 		System.out.println("getexams");
 		data = FXCollections.observableArrayList(exams);
 	}
@@ -62,7 +62,7 @@ public class ViewBoundary implements Initializable  {
 		primaryStage.show();
 	}
 
-	public void loadData(ArrayList<Exam> exams) {
+	public static void loadData(ArrayList<Exam> exams) {
 		System.out.println("loadata");
 		getExams(exams);
 	}

@@ -38,10 +38,9 @@ public class MyClient extends AbstractClient {
 			System.out.println("client is happy :)");
 			break;
 		case 'S': /* server says he replayed the database */
-//			ClientUI ui = new ClientUI();
 			exams = decodeMessageFromServer(str);
-			System.out.println("r");
-//			exams = decodeMessageFromServer(str);
+//			System.out.println("r");
+////			exams = decodeMessageFromServer(str);
 			break;
 
 		}
@@ -126,25 +125,25 @@ public class MyClient extends AbstractClient {
 		System.exit(0);
 	}
 
-	public static void main(String[] args) throws IOException {
-		MyClient client = new MyClient("localhost", 5555, new ClientController("localhost", 5555));
-		try {
-			client.openConnection();
-			awaitResponse = true;
-			client.sendToServer("D");
-
-			while (awaitResponse) {
-				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-
-		} catch (Exception e) {
-			client.quit();
-			e.printStackTrace();
-		}
-
-	}
+//	public static void main(String[] args) throws IOException {
+//		MyClient client = new MyClient("localhost", 5555, new ClientController("localhost", 5555));
+//		try {
+//			client.openConnection();
+//			awaitResponse = true;
+//			client.sendToServer("D");
+//
+//			while (awaitResponse) {
+//				try {
+//					Thread.sleep(100);
+//				} catch (InterruptedException e) {
+//					e.printStackTrace();
+//				}
+//			}
+//
+//		} catch (Exception e) {
+//			client.quit();
+//			e.printStackTrace();
+//		}
+//
+//	}
 }
