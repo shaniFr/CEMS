@@ -48,9 +48,10 @@ public class ViewBoundary implements Initializable  {
 	static ObservableList<Exam> data;
 
 	/* converts Exam array list to Observable Exam array list */
-	public static void getExams(ArrayList<Exam> exams) {
+	public static void getExams(ArrayList<Exam> exams2) {
 		System.out.println("getexams");
-		data = FXCollections.observableArrayList(exams);
+//		MyClient.exams
+		data = FXCollections.observableArrayList(MyClient.exams);
 	}
 	
 	public void start(Stage primaryStage) throws Exception {		
