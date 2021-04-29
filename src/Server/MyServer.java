@@ -71,7 +71,6 @@ public class MyServer extends AbstractServer {
 					client.sendToClient("X"); /* update unsuccessful */
 				break;
 			case 'D': /* client says he wants to see the database */
-//				System.out.println("got a d");
 				client.sendToClient("S" + this.jdbc.selectQueryToString());
 				break;
 			case 'C': /* client says he is disconnected */
@@ -151,6 +150,7 @@ public class MyServer extends AbstractServer {
 		} catch (Exception ex) {
 			System.out.println("ERROR - Could not listen for clients!");
 		}
+		
 //		sv.jdbc.updateQuery("123456", "200");
 //		sv.jdbc.selectQuery();
 

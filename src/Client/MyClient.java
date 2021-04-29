@@ -2,16 +2,16 @@ package Client;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
 import Data.Exam;
 import ocsf.client.*;
 
 public class MyClient extends AbstractClient {
-	private static int i = 0;
 	public static boolean awaitResponse = false;
-
-	public MyClient(String host, int port) {
+	ChatIF clientUI; 
+	
+	public MyClient(String host, int port, ChatIF clientUI) throws IOException{
 		super(host, port);
+		this.clientUI = clientUI;
 	}
 
 	@Override
@@ -19,7 +19,7 @@ public class MyClient extends AbstractClient {
 		ArrayList<Exam> examlist;
 		String str;
 		char op;
-//		System.out.println("anybody home?");
+
 		System.out.println(this.getClass().getName() + " handle msg from server received");
 		if (!(msg instanceof String)) {
 			System.out.println("Client : Invalid message from server !!");
@@ -34,7 +34,7 @@ public class MyClient extends AbstractClient {
 		case 'Y':
 			System.out.println("client is happy :)");
 			break;
-		case 'S': /* return select output to UI */
+		case 'S': /* load server's response (the database) to the View Database window */
 			ViewBoundary.loadData(decodeMessageFromServer(str));
 			break;
 
@@ -98,30 +98,27 @@ public class MyClient extends AbstractClient {
 		System.exit(0);
 	}
 
-	public void accept(Object message) {
-		System.out.println(this.getClass().getName() + " accept");
-	}
+	
 
 	public static void main(String[] args) {
-		MyClient client = new MyClient("localhost", 5555);
-		try {
-			client.openConnection();
-			awaitResponse = true;
-			client.sendToServer("D");
-
-			while (awaitResponse) {
-				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-
-		} catch (Exception e) {
-			client.quit();
-			e.printStackTrace();
-
+//		MyClient client = new MyClient("localhost", 5555);
+//		try {
+//			client.openConnection();
+//			awaitResponse = true;
+//			client.sendToServer("S");
+//
+//			while (awaitResponse) {
+//				try {
+//					Thread.sleep(100);
+//				} catch (InterruptedException e) {
+//					e.printStackTrace();
+//				}
+//			}
+//
+//		} catch (Exception e) {
+//			client.quit();
+//			e.printStackTrace();
 		}
 
 	}
-}
+
