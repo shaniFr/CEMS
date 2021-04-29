@@ -54,8 +54,10 @@ public class ViewBoundary implements Initializable {
 		System.out.println("getexams");
 //		MyClient.exams
 		for (int i=0; i<MyClient.exams.size(); i++)
-			System.out.println(MyClient.exams.get(i).getScores());
+			System.out.println(MyClient.exams.get(i).getScoresInString());
 		data = FXCollections.observableArrayList(MyClient.exams);
+		
+		System.out.println(data.get(0).getScoresInString());
 	//	System.out.println(exams2.get(0).getScores());
 	}
 
