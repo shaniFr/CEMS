@@ -39,7 +39,7 @@ public class MyClient extends AbstractClient {
 			break;
 		case 'S': /* server says he replayed the database */
 			exams = decodeMessageFromServer(str);
-//			System.out.println("r");
+//			System.out.println("\n\nr\n\n");
 ////			exams = decodeMessageFromServer(str);
 			break;
 
@@ -63,6 +63,7 @@ public class MyClient extends AbstractClient {
 			ex.setScores(decodedMsg[i + 4]);
 			i = i + 5;
 			examTable.add(ex);
+			//System.out.println(examTable.get(i).getScores());
 		}
 		return examTable;
 	}

@@ -22,7 +22,7 @@ public class ClientUI extends Application {
 		bd = new MyClientBoundary();
 		bd.start(primaryStage);
 		
-		try {
+	/*	try {
 			chat.client.openConnection();
 			MyClient.awaitResponse = true;
 			chat.client.sendToServer("D");
@@ -39,6 +39,6 @@ public class ClientUI extends Application {
 			chat.client.quit();
 			e.printStackTrace();
 		}
-		
+*/		
 	}
 }
