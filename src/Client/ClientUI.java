@@ -5,7 +5,7 @@ import javafx.stage.Stage;
 
 public class ClientUI extends Application {
 	public static ClientController chat;
-	public ViewBoundary bd;
+	public MyClientBoundary bd;
 	public Stage primaryStage;
 	public static void main(String[] args) {
 		
@@ -19,7 +19,7 @@ public class ClientUI extends Application {
 //		ViewBoundary bd = new ViewBoundary();
 //		chat.client.sendToServer("D");
 		primaryStage = pS;
-		bd = new ViewBoundary();
+		bd = new MyClientBoundary();
 		bd.start(primaryStage);
 		
 		try {
