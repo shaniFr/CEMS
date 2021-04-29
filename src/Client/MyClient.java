@@ -7,11 +7,14 @@ import ocsf.client.*;
 
 public class MyClient extends AbstractClient {
 	public static boolean awaitResponse = false;
-	ChatIF clientUI; 
-	
-	public MyClient(String host, int port, ChatIF clientUI) throws IOException{
+	public static ArrayList<Exam> exams = new ArrayList<>();
+	ChatIF clientUI;
+
+	public MyClient(String host, int port, ChatIF clientUI) throws IOException {
 		super(host, port);
+		System.out.println(this.getClass() + "constructor");
 		this.clientUI = clientUI;
+		
 	}
 
 	@Override
@@ -28,14 +31,17 @@ public class MyClient extends AbstractClient {
 		str = (String) msg;
 		op = str.charAt(0);
 		switch (op) {
-		case 'X':
+		case 'X': /* server says he updated the database unsuccessfully */
 			System.out.println("client is sad :(");
 			break;
-		case 'Y':
+		case 'Y': /* server says he updated the database successfully */
 			System.out.println("client is happy :)");
 			break;
-		case 'S': /* load server's response (the database) to the View Database window */
-			ViewBoundary.loadData(decodeMessageFromServer(str));
+		case 'S': /* server says he replayed the database */
+//			ClientUI ui = new ClientUI();
+			exams = decodeMessageFromServer(str);
+			System.out.println("r");
+//			exams = decodeMessageFromServer(str);
 			break;
 
 		}
@@ -63,12 +69,27 @@ public class MyClient extends AbstractClient {
 	}
 
 	public void handleMessageFromClientUI(Object message) {
+		System.out.println("Recieved from UI:" + message);
+		try {
+			openConnection();// in order to send more than one message
+			awaitResponse = true;
+			sendToServer(message);
+			// wait for response
+			while (awaitResponse) {
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+
+			}
+
 //		   try
 //		    {
 //		    	openConnection();//in order to send more than one message
 ////		       	awaitResponse = true;
 //		    	sendToServer(message);
-		// wait for response
+			// wait for response
 //				while (awaitResponse) {
 //					try {
 //						Thread.sleep(100);
@@ -83,6 +104,13 @@ public class MyClient extends AbstractClient {
 //		      clientUI.display("Could not send message to server: Terminating client."+ e);
 //		      quit();
 //		    }
+		}
+
+		catch (IOException e) {
+			e.printStackTrace();
+			clientUI.display("Could not send message to server: Terminating client." + e);
+			quit();
+		}
 	}
 
 	/**
@@ -98,27 +126,25 @@ public class MyClient extends AbstractClient {
 		System.exit(0);
 	}
 
-	
+	public static void main(String[] args) throws IOException {
+		MyClient client = new MyClient("localhost", 5555, new ClientController("localhost", 5555));
+		try {
+			client.openConnection();
+			awaitResponse = true;
+			client.sendToServer("D");
 
-	public static void main(String[] args) {
-//		MyClient client = new MyClient("localhost", 5555);
-//		try {
-//			client.openConnection();
-//			awaitResponse = true;
-//			client.sendToServer("S");
-//
-//			while (awaitResponse) {
-//				try {
-//					Thread.sleep(100);
-//				} catch (InterruptedException e) {
-//					e.printStackTrace();
-//				}
-//			}
-//
-//		} catch (Exception e) {
-//			client.quit();
-//			e.printStackTrace();
+			while (awaitResponse) {
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+
+		} catch (Exception e) {
+			client.quit();
+			e.printStackTrace();
 		}
 
 	}
-
+}

@@ -46,6 +46,8 @@ public class MyServer extends AbstractServer {
 		char op;
 		int temp;
 
+		System.out.println(this.getClass() + " received msg from client");
+		
 		System.out.println(this.getClass().getName() + msg);
 		if (!(msg instanceof String)) {
 			System.out.println("Server : Invalid message from client !!");

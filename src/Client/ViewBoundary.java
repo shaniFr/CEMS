@@ -48,11 +48,13 @@ public class ViewBoundary implements Initializable  {
 	static ObservableList<Exam> data;
 
 	/* converts Exam array list to Observable Exam array list */
-	public static void getExams(ArrayList<Exam> exams) {
+	public void getExams(ArrayList<Exam> exams) {
+		System.out.println("getexams");
 		data = FXCollections.observableArrayList(exams);
 	}
 	
 	public void start(Stage primaryStage) throws Exception {		
+		System.out.println("start");
 		Parent root = FXMLLoader.load(this.getClass().getResource("/Client/View.fxml"));
 		Scene scene = new Scene(root);
 		primaryStage.setTitle("Exam Database");
@@ -60,16 +62,19 @@ public class ViewBoundary implements Initializable  {
 		primaryStage.show();
 	}
 
-	public static void loadData(ArrayList<Exam> exams) {
+	public void loadData(ArrayList<Exam> exams) {
+		System.out.println("loadata");
 		getExams(exams);
 	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		System.out.println("init");
 		setTableView();
 	}
 
 	private void setTableView() {
+		System.out.println("set");
 		/* fill table with data */
 		tblView.setItems(data);
 		
