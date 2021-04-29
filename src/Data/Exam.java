@@ -2,6 +2,7 @@ package Data;
 
 import java.util.ArrayList;
 
+
 public class Exam {
 	private String ExamID;
 	private int Duration;
@@ -16,7 +17,7 @@ public class Exam {
 		this.Duration = Duration;
 		this.Scores = Scores;
 	}
-
+	
 	public String getExamID() {
 		return ExamID;
 	}
