@@ -12,7 +12,6 @@ public class MyClient extends AbstractClient {
 
 	public MyClient(String host, int port, ChatIF clientUI) throws IOException {
 		super(host, port);
-		System.out.println(this.getClass() + "constructor");
 		this.clientUI = clientUI;
 		
 	}
@@ -39,11 +38,6 @@ public class MyClient extends AbstractClient {
 			break;
 		case 'S': /* server says he replayed the database */
 			exams = decodeMessageFromServer(str);
-			for (int i=0; i<exams.size();i++)
-				System.out.println(exams.get(i).getScoresInString());
-			
-//			System.out.println("\n\nr\n\n");
-////			exams = decodeMessageFromServer(str);
 			break;
 
 		}
@@ -71,8 +65,8 @@ public class MyClient extends AbstractClient {
 			ex.setCourse(decodedMsg[i + 2]);
 			ex.setDuration(Integer.parseInt(decodedMsg[i + 3]));
 //			System.out.println(decodedMsg[i + 4]); //
-			ex.setScores("abc");
-			//ex.setScores(decodedMsg[i + 4]);
+//			ex.setScores("abc");
+			ex.setScores(decodedMsg[i + 4]);
 //			System.out.println(ex.getScoresInString());//
 			i = i + 5;
 			examTable.add(ex);

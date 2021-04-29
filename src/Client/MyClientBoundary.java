@@ -39,5 +39,18 @@ public class MyClientBoundary {
 			e.printStackTrace();
 		}
 	}
+	
+	@FXML
+	void updateServer(ActionEvent event) {
+//		ClientUI.chat.accept("U");
+		((Node)event.getSource()).getScene().getWindow().hide(); //hiding primary window
+		UpdateBoundary ub = new UpdateBoundary();
+		Stage primaryStage = new Stage();
+		try {
+			ub.start(primaryStage);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 }

@@ -39,7 +39,6 @@ public class ClientController implements ChatIF {
 	 * @param port The port to connect on.
 	 */
 	public ClientController(String host, int port) {
-		System.out.println(this.getClass() + " constructor");
 		try {
 			client = new MyClient(host, port, this);
 //			client.sendToServer("D");
@@ -62,7 +61,6 @@ public class ClientController implements ChatIF {
 	
 	public void accept(Object message) {
 		client.handleMessageFromClientUI(message);
-		System.out.println(this.getClass().getName() + " accept");
 	}
 
 	@Override

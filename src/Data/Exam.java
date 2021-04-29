@@ -52,8 +52,12 @@ public class Exam {
 	}
 
 	public void setScores(String scores) {
-		System.out.println(getClass().getName() + Scores);
+		System.out.println(getClass().getName() + scores);
 		Scores = scores;
+	}
+	
+	public String getScores() {
+		return Scores;
 	}
 
 //	/* this won't survive.. */

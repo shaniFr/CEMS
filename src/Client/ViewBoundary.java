@@ -2,6 +2,7 @@ package Client;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Observable;
 import java.util.ResourceBundle;
 
 import Data.Exam;
@@ -23,6 +24,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 public class ViewBoundary implements Initializable {
 
@@ -45,24 +47,21 @@ public class ViewBoundary implements Initializable {
 	private TableColumn<Exam, Integer> Duration;
 
 	@FXML
-	private TableColumn<Exam, String> QScore;
+	private TableColumn<Exam, String> Scores;
 
 	static ObservableList<Exam> data;
 
 	/* converts Exam array list to Observable Exam array list */
 	public static void getExams(ArrayList<Exam> exams2) {
-		System.out.println("getexams");
-//		MyClient.exams
-		for (int i=0; i<MyClient.exams.size(); i++)
-			System.out.println(MyClient.exams.get(i).getScoresInString());
 		data = FXCollections.observableArrayList(MyClient.exams);
-		
-		System.out.println(data.get(0).getScoresInString());
-	//	System.out.println(exams2.get(0).getScores());
 	}
 
+	/**
+	 * 
+	 * @param primaryStage	
+	 * @throws Exception
+	 */
 	public void start(Stage primaryStage) throws Exception {
-		System.out.println("start");
 		Parent root = FXMLLoader.load(this.getClass().getResource("/Client/View.fxml"));
 		Scene scene = new Scene(root);
 		primaryStage.setTitle("Exam Database");
@@ -71,28 +70,23 @@ public class ViewBoundary implements Initializable {
 	}
 
 	public static void loadData(ArrayList<Exam> exams) {
-		System.out.println("loadata");
 		getExams(exams);
 	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		System.out.println("init");
 		getExams(MyClient.exams);
 		setTableView();
 	}
 
 	private void setTableView() {
-		System.out.println("set");
-		/* fill table with data */
-		tblView.setItems(data);
-
-		/* associate data with columns */
 		ExamID.setCellValueFactory(new PropertyValueFactory<Exam, String>("ExamID"));
 		Subject.setCellValueFactory(new PropertyValueFactory<Exam, String>("Subject"));
 		Course.setCellValueFactory(new PropertyValueFactory<Exam, String>("Course"));
 		Duration.setCellValueFactory(new PropertyValueFactory<Exam, Integer>("Duration"));
-		QScore.setCellValueFactory(new PropertyValueFactory<Exam, String>("Scores"));
+		Scores.setCellValueFactory(new PropertyValueFactory<Exam, String>("Scores"));
+		
+		tblView.setItems(data);
 		}
 
 	@FXML

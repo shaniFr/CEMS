@@ -60,8 +60,11 @@ public class MyServer extends AbstractServer {
 			switch (op) {
 
 			case 'U': /* client says he wants to update the database */
-				ExamID = str.substring(1, 7); /* ExamID is 6 digit long */
-				newDuration = ExamID.substring(7);
+				String decoded[] = str.split("-");
+				ExamID = decoded[1];
+//				.substring(1, 7); /* ExamID is 6 digit long */
+				newDuration = decoded[2];
+				//ExamID.substring(7);
 				temp = Integer.parseInt(newDuration);
 				if (temp < 0) {
 					System.out.println("Server : Invalid new duration from client !!");

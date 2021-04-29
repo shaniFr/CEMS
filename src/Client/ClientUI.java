@@ -15,9 +15,6 @@ public class ClientUI extends Application {
 	@Override
 	public void start(Stage pS) throws Exception {
 		chat = new ClientController("localhost", 5555);
-		System.out.println(this.getClass());
-//		ViewBoundary bd = new ViewBoundary();
-//		chat.client.sendToServer("D");
 		primaryStage = pS;
 		bd = new MyClientBoundary();
 		bd.start(primaryStage);
