@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.scene.control.*?>
+<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Server.MyServerBoundary">
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Server.MyServerBoundary">
    <children>
-      <Label fx:id="lblConnectedIp" layoutX="200.0" layoutY="141.0" text="Connected IP:" />
-      <Label fx:id="lblHostName" layoutX="216.0" layoutY="187.0" text="Host name:" />
-      <Label fx:id="lblConnectionStatus" layoutX="169.0" layoutY="239.0" text="Connection status:" />
-      <Label fx:id="lblIP" layoutX="323.0" layoutY="141.0" text="IP" />
-      <Label fx:id="lblHost" layoutX="321.0" layoutY="190.0" text="Host" />
-      <Label fx:id="lblStatus" layoutX="323.0" layoutY="239.0" text="Status" />
+      <Label layoutX="198.0" layoutY="108.0" text="IP:" />
+      <Label fx:id="lblIP" layoutX="292.0" layoutY="108.0" text="IP" />
+      <Label layoutX="181.0" layoutY="156.0" text="Host:" />
+      <Label fx:id="lblHost" layoutX="287.0" layoutY="156.0" text="Host" />
+      <Label layoutX="181.0" layoutY="218.0" text="Status:" />
+      <Label fx:id="lblStatus" layoutX="298.0" layoutY="218.0" text="Status" />
    </children>
-</AnchorPane>
+</Pane>
