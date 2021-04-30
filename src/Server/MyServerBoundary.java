@@ -1,24 +1,23 @@
 package Server;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 
-public class MyServerBoundary extends Application {
+public class MyServerBoundary implements Initializable {
     @FXML
     private Label lblConnectedIp;
-
-    @FXML
-    private Text txtHost; //
-
-    @FXML
-    private Text txtStatus; //
 
     @FXML
     private Label lblConnectionStatus;
@@ -27,87 +26,65 @@ public class MyServerBoundary extends Application {
     private Label lblHostName;
 
     @FXML
-    private Text txtIP; //
+    private Label lblIP;
+
+    @FXML
+    private Label lblStatus;
+
+    @FXML
+    private Label lblHost;
 
     private String host,ip,status;
     
-	@Override
+    private Stage pr;
+    Parent r;
 	public void start(Stage primaryStage) throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("/Server/MyServer.fxml"));
 		Scene scene = new Scene(root);
 		primaryStage.setTitle("Server form");
 		primaryStage.setScene(scene);
-
+		ServerUI.runServer(ServerUI.DEFAULT_PORT);
 		primaryStage.show();
+		
 		
 	}
 	
-	public void updateClientStatus(String host, String ip, String status) {
+	public void updateServerBoundary(String host, String ip, String status) {
+		System.out.println("1");
 		System.out.println(this.getClass().getName() + " update client status");
 		this.host = host;
 		this.ip=ip;
 		this.status=status;
-		txtStatus.setText(status);
-		txtHost.setText(host);
-		txtIP.setText(ip);
+		ActionEvent event = new ActionEvent();
+		updateServerGUI(event);
 	}
 	
-	
-	
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-//	/**
-//	 * The default port to listen on.
-//	 */
-//	final public static int DEFAULT_PORT = 5555;
-//	
-//	
-//	
-//	/**
-//	 * Launches server application
-//	 * @param args
-//	 * @throws Exception
-//	 */
-//	public static void main( String args[] ) throws Exception
-//	   {   
-//		 launch(args);
-//	  } // end main
-//
-//	@Override
-//	public void start(Stage primaryStage) throws Exception {
-//		// TODO Auto-generated method stub				  		
-////		ServerPortFrameController aFrame = new ServerPortFrameController(); // create StudentFrame
-//		 
-////		aFrame.start(primaryStage);
-//	}
-//	
-//	/**
-//	 * Fetches port& runs server under port name
-//	 * @param p		Server port
-//	 */
-//	public static void runServer(String p) {
-//		int port = 0; // Port to listen on
-//
-//		try {
-//			port = Integer.parseInt(p); // Get port from command line
-//		} catch (Throwable t) {
-//			port = DEFAULT_PORT; // Set port to 5555
-//		}
-//
-//		MyServer sv = new MyServer(port);
-//
-//		try {
-//			sv.listen(); // Start listening for connections
-//		} catch (Exception ex) {
-//			System.out.println("ERROR - Could not listen for clients!");
-//		}
-//	}
+	@FXML
+	void updateServerGUI(ActionEvent event) {
+//		System.out.println("2");
+//		lblStatus = new Label();
+//		lblStatus.setText("something");
+//		System.out.println(lblStatus.getText());
+//		System.out.println(lblStatus);
+////		System.out.println("ypdateservergui");
+//		lblStatus.setText("sdjjsdjdjdjdjjjdd");
+		
+//		lblIP.setText(ip);
+//		Platform.runLater(()->{
+//			lblStatus.setText("abbbcc");
+//	    });
+		
+//		System.out.println("text field status = " + lblIP.getText());
+	}
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+//		System.out.println("initialize..");
+//		lblStatus = new Label("a");
+//		System.out.println(lblStatus.getText());
+//		lblHost = new Label("b");
+//		lblIP = new Label("c");
+//		
+		
+	}
 }

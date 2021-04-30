@@ -13,6 +13,7 @@ public class MyClient extends AbstractClient {
 	public MyClient(String host, int port, ChatIF clientUI) throws IOException {
 		super(host, port);
 		this.clientUI = clientUI;
+		openConnection();
 	}
 
 	@Override

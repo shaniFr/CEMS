@@ -26,10 +26,12 @@ public class MyServer extends AbstractServer {
 	 * 
 	 * @param port The server port to database
 	 */
+//	MyObservableServer myObserableServer;
+	
 	public MyServer(int port) {
 		super(port);
 		jdbc = JDBCSingleton.getInstance();
-//		System.out.println();
+//		myObserableServer = new MyObservableServer(port);
 	}
 
 	/**
@@ -80,7 +82,7 @@ public class MyServer extends AbstractServer {
 				break;
 			case 'C': /* client says he is disconnected */
 				updateClientDetails(this.getPort(), client.getInetAddress().getHostName(), "Disconnected");
-				System.out.println("c");
+				System.out.println("myserver - got a c");
 				break;
 			}
 		} catch (Exception e) {
@@ -102,8 +104,8 @@ public class MyServer extends AbstractServer {
 	}
 
 	private void updateClientDetails(int port, String hostName, String status) {
-		System.out.println("Port: " + port + "\tHost: " + hostName + "\t\tStatus: " + status);
-		ServerUI.sb.updateClientStatus(hostName, "something", status);
+		System.out.println("...Port: " + port + "\tHost: " + hostName + "\t\tStatus: " + status);
+		ServerUI.sb.updateServerBoundary(hostName, "something", status);
 	}
 
 	/**
@@ -112,12 +114,12 @@ public class MyServer extends AbstractServer {
 	 * synchronized.
 	 *
 	 * @param client the connection with the client.
-	 */
-	synchronized protected void clientDisconnected(ConnectionToClient client) {
-		System.out.println("are you getting here?");
-		System.out.println("Port: " + this.getPort() + "\tHost: " + client.getInetAddress().getHostName()
-				+ "\tStatus: Disconnected");
-	}
+//	 */
+//	synchronized protected void clientDisconnected(ConnectionToClient client) {
+//		System.out.println("are you getting here?");
+//		System.out.println("Port: " + this.getPort() + "\tHost: " + client.getInetAddress().getHostName()
+//				+ "\tStatus: Disconnected");
+//	}
 
 	/**
 	 * This method overrides the one in the superclass. Called when the server
@@ -142,26 +144,26 @@ public class MyServer extends AbstractServer {
 	 * @param args[0] The port number to listen on. Defaults to 5555 if no argument
 	 *                is entered.
 	 */
-	public static void main(String[] args) {
-		int port = 0; // Port to listen on
-
-		try {
-			port = Integer.parseInt(args[0]); // Get port from command line
-		} catch (Throwable t) {
-			port = 5555; // Set port to 5555
-		}
-
-		MyServer sv = new MyServer(port);
-
-		try {
-			sv.listen(); // Start listening for connections
-		} catch (Exception ex) {
-			System.out.println("ERROR - Could not listen for clients!");
-		}
-		
+//	public static void main(String[] args) {
+//		int port = 0; // Port to listen on
+//
+//		try {
+//			port = Integer.parseInt(args[0]); // Get port from command line
+//		} catch (Throwable t) {
+//			port = 5555; // Set port to 5555
+//		}
+//
+//		MyServer sv = new MyServer(port);
+//
+//		try {
+//			sv.listen(); // Start listening for connections
+//		} catch (Exception ex) {
+//			System.out.println("ERROR - Could not listen for clients!");
+//		}
+//		
 //		sv.jdbc.updateQuery("123456", "200");
 //		sv.jdbc.selectQuery();
 
-	}
+//	}
 
 }

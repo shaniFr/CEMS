@@ -13,40 +13,48 @@ public class ServerUI extends Application {
 	  } // end main
 	
 	public void start(Stage pS) throws Exception {
-		MyServer sv = new MyServer(DEFAULT_PORT);
-        
-        try 
-        {
-          sv.listen(); //Start listening for connections
-        } 
-        catch (Exception ex) 
-        {
-          System.out.println("ERROR - Could not listen for clients!");
-        }
-        
+//		MyServer sv = new MyServer(DEFAULT_PORT);
+//        
+//        try 
+//        {
+//          sv.listen(); //Start listening for connections
+//        } 
+//        catch (Exception ex) 
+//        {
+//          System.out.println("ERROR - Could not listen for clients!");
+//        }
         
 		primaryStage =  pS;
 		sb = new MyServerBoundary();
 		sb.start(primaryStage);
+		
+	}
+	public static void runServer(int p)
+	{
+		 int port = 0; //Port to listen on
+
+	        try
+	        {
+	        	port = DEFAULT_PORT; //Set port to 5555
+	          
+	        }
+	        catch(Throwable t)
+	        {
+	        	System.out.println("ERROR - Could not connect!");
+	        }
+	    	
+	        MyServer sv = new MyServer(port);
+	        
+	        try 
+	        {
+	          sv.listen(); //Start listening for connections
+	        } 
+	        catch (Exception ex) 
+	        {
+	          System.out.println("ERROR - Could not listen for clients!");
+	        }
 	}
 	
-//	public static void runServer(String p)
-//	{
-//		
-//	        MyServer sv = new MyServer(DEFAULT_PORT);
-//	        
-//	        try 
-//	        {
-//	          sv.listen(); //Start listening for connections
-//	        } 
-//	        catch (Exception ex) 
-//	        {
-//	          System.out.println("ERROR - Could not listen for clients!");
-//	        }
-//	}
-//	
-
-
 }
 
 
