@@ -5,6 +5,8 @@ package Client;
 //license found at www.lloseng.com 
 import java.io.*;
 
+import Server.ServerUI;
+
 /**
  * This class constructs the UI for a chat client. It implements the chat
  * interface in order to activate the display() method. Warning: Some of the
@@ -41,12 +43,11 @@ public class ClientController implements ChatIF {
 	public ClientController(String host, int port) {
 		try {
 			client = new MyClient(host, port, this);
-//			client.sendToServer("D");
+			
 		} catch (IOException exception) {
 			System.out.println(this.getClass() + " Error: Can't setup connection!" + " Terminating client.");
 			System.exit(1);
 		}
-		
 	}
 
 //Instance methods ************************************************
@@ -55,9 +56,6 @@ public class ClientController implements ChatIF {
 	 * This method waits for input from the console. Once it is received, it sends
 	 * it to the client's message handler.
 	 */
-//	public void accept(String str) {
-//		client.handleMessageFromClientUI(str);
-//	}
 	
 	public void accept(Object message) {
 		client.handleMessageFromClientUI(message);

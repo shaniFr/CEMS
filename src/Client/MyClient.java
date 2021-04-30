@@ -13,7 +13,6 @@ public class MyClient extends AbstractClient {
 	public MyClient(String host, int port, ChatIF clientUI) throws IOException {
 		super(host, port);
 		this.clientUI = clientUI;
-		
 	}
 
 	@Override
@@ -48,33 +47,21 @@ public class MyClient extends AbstractClient {
 		ArrayList<Exam> examTable = new ArrayList<>();
 		String[] decodedMsg;
 		String temp = str.substring(1);
-//		System.out.println(str);
 		decodedMsg = temp.split("-");
-//		
-//		for (int i=0;i<decodedMsg.length;i++)
-//			System.out.println(decodedMsg[i]);
-//		
+		
 		int i = 0;
 
 		for (int j = 0; j < decodedMsg.length / 5; j++) {
 			Exam ex = new Exam("", "", "", 0, "");
 			ex.setExamID(decodedMsg[i]);
-//			System.out.println(decodedMsg[i]);
-
 			ex.setSubject(decodedMsg[i + 1]);
 			ex.setCourse(decodedMsg[i + 2]);
 			ex.setDuration(Integer.parseInt(decodedMsg[i + 3]));
-//			System.out.println(decodedMsg[i + 4]); //
-//			ex.setScores("abc");
 			ex.setScores(decodedMsg[i + 4]);
-//			System.out.println(ex.getScoresInString());//
 			i = i + 5;
 			examTable.add(ex);
 		}
 		System.out.println("done");
-//		
-//		for (i=0; i<examTable.size();i++)
-//			System.out.println(examTable.get(i).getScoresInString());
 		return examTable;
 	}
 
@@ -93,27 +80,6 @@ public class MyClient extends AbstractClient {
 				}
 
 			}
-
-//		   try
-//		    {
-//		    	openConnection();//in order to send more than one message
-////		       	awaitResponse = true;
-//		    	sendToServer(message);
-			// wait for response
-//				while (awaitResponse) {
-//					try {
-//						Thread.sleep(100);
-//					} catch (InterruptedException e) {
-//						e.printStackTrace();
-//					}
-//				}
-//		    }
-//		    catch(IOException e)
-//		    {
-//		    	e.printStackTrace();
-//		      clientUI.display("Could not send message to server: Terminating client."+ e);
-//		      quit();
-//		    }
 		}
 
 		catch (IOException e) {
@@ -128,33 +94,10 @@ public class MyClient extends AbstractClient {
 	 */
 	public void quit() {
 		try {
-//			System.out.println(this.getClass().getName() + " quit");
 			this.sendToServer("C");
 			closeConnection();
 		} catch (IOException e) {
 		}
 		System.exit(0);
 	}
-
-//	public static void main(String[] args) throws IOException {
-//		MyClient client = new MyClient("localhost", 5555, new ClientController("localhost", 5555));
-//		try {
-//			client.openConnection();
-//			awaitResponse = true;
-//			client.sendToServer("D");
-//
-//			while (awaitResponse) {
-//				try {
-//					Thread.sleep(100);
-//				} catch (InterruptedException e) {
-//					e.printStackTrace();
-//				}
-//			}
-//
-//		} catch (Exception e) {
-//			client.quit();
-//			e.printStackTrace();
-//		}
-//
-//	}
 }

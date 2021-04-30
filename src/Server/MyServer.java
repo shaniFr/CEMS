@@ -80,6 +80,7 @@ public class MyServer extends AbstractServer {
 				break;
 			case 'C': /* client says he is disconnected */
 				updateClientDetails(this.getPort(), client.getInetAddress().getHostName(), "Disconnected");
+				System.out.println("c");
 				break;
 			}
 		} catch (Exception e) {
@@ -96,11 +97,13 @@ public class MyServer extends AbstractServer {
 	 */
 	protected void clientConnected(ConnectionToClient client) {
 		/* output client details */
+		System.out.println("client connected...");
 		updateClientDetails(this.getPort(), client.getInetAddress().getHostName(), "Connected");
 	}
 
 	private void updateClientDetails(int port, String hostName, String status) {
 		System.out.println("Port: " + port + "\tHost: " + hostName + "\t\tStatus: " + status);
+		ServerUI.sb.updateClientStatus(hostName, "something", status);
 	}
 
 	/**

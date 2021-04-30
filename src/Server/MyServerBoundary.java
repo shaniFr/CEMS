@@ -33,7 +33,7 @@ public class MyServerBoundary extends Application {
     
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		Parent root = FXMLLoader.load(getClass().getResource("/Client/MyClient.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/Server/MyServer.fxml"));
 		Scene scene = new Scene(root);
 		primaryStage.setTitle("Server form");
 		primaryStage.setScene(scene);
@@ -42,7 +42,8 @@ public class MyServerBoundary extends Application {
 		
 	}
 	
-	void getInfoFromMyServer(String host, String ip, String status) {
+	public void updateClientStatus(String host, String ip, String status) {
+		System.out.println(this.getClass().getName() + " update client status");
 		this.host = host;
 		this.ip=ip;
 		this.status=status;
