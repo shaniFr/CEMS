@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import Data.Exam;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import ocsf.server.AbstractServer;
 import ocsf.server.ConnectionToClient;
 
@@ -73,10 +75,10 @@ public class MyServer extends AbstractServer {
 					break;
 				}
 				if (jdbc.updateQuery(ExamID, newDuration)) /* update duration in database */
-					client.sendToClient("V"); /* update successful */
+					client.sendToClient("Y"); /* update successful */
 				else
-					client.sendToClient("X"); /* update unsuccessful */
-				break;
+					{client.sendToClient("X");/* update unsuccessful */
+			     	break;}
 			case 'D': /* client says he wants to see the database */
 				client.sendToClient("S" + this.jdbc.selectQueryToString());
 				break;

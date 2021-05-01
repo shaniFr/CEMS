@@ -2,7 +2,12 @@ package Client;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
+
 import Data.Exam;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import ocsf.client.*;
 
 public class MyClient extends AbstractClient {
@@ -21,8 +26,10 @@ public class MyClient extends AbstractClient {
 		ArrayList<Exam> examlist;
 		String str;
 		char op;
+		str = (String) msg;
+		//op = str.charAt(0);
 
-		System.out.println(this.getClass().getName() + " handle msg from server received");
+		System.out.println(this.getClass().getName() + " handle msg from server received"+ msg);
 		if (!(msg instanceof String)) {
 			System.out.println("Client : Invalid message from server !!");
 			return;
@@ -31,11 +38,15 @@ public class MyClient extends AbstractClient {
 		op = str.charAt(0);
 		switch (op) {
 		case 'X': /* server says he updated the database unsuccessfully */
-			System.out.println("client is sad :(");
-			break;
-		case 'Y': /* server says he updated the database successfully */
+			{
+				JOptionPane.showMessageDialog(null, "Test does not exist");
+        	break;
+        
+			}
+		case 'Y':{ /* server says he updated the database successfully */
 			System.out.println("client is happy :)");
-			break;
+			JOptionPane.showMessageDialog(null, "update successfully");
+			break;}
 		case 'S': /* server says he replayed the database */
 			exams = decodeMessageFromServer(str);
 			break;

@@ -1,11 +1,15 @@
 package Client;
 
+import javax.swing.JOptionPane;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -13,6 +17,7 @@ import javafx.stage.Stage;
 
 public class UpdateBoundary {
 
+	int temp2;
 	
     @FXML
     private Button btnBack;
@@ -43,9 +48,72 @@ public class UpdateBoundary {
     @FXML
     public void Save(ActionEvent event) throws Exception {
 		/* send message to client controller */
-		String temp = "U" + "-" + this.txtExamID.getText() + "-" + this.txtNewDuration.getText() + "-";
-		System.out.println(this.getClass().getName() + "save : " + temp);
-		ClientUI.chat.accept(temp);
+    	try { 
+    		   temp2 = Integer.parseInt(txtNewDuration.getText());
+    	    } 
+    	catch(NumberFormatException ex) {
+    		System.err.println("Invalid string in argumment"); 
+    	 }
+    	     
+    	char op,op1;
+    	String str,str1;
+        int flag2=1;
+    	str= txtExamID.getText();
+    	str1=txtNewDuration.getText();
+    	
+    	for (int i=0;i<str.length();i++)
+    	{ 
+		   op = str.charAt(i);
+		   if(((int)op <48)||((int)op>57)){
+			   /*Alert alert = new Alert(AlertType.INFORMATION);
+	        	alert.setTitle("Wrong input");
+	        	alert.setHeaderText("wrong input");
+	        	alert.setContentText("you must enter only numbers!!");
+	        	alert.showAndWait();*/
+	        	flag2=0;
+			   JOptionPane.showMessageDialog(null, "Enter numbers!");
+	        	break;   
+		   }
+    	}
+		  
+    	for (int i=0;i<str1.length();i++)
+	    	{ 
+			   op1 = str1.charAt(i);
+			   if(((int)op1 <48)||((int)op1>57)){
+				   Alert alert = new Alert(AlertType.INFORMATION);
+		        	alert.setTitle("Wrong input");
+		        	alert.setHeaderText("wrong input");
+		        	alert.setContentText("you must enter only numbers!!");
+		        	alert.showAndWait();
+		        	flag2=0;
+		        	break;   
+			   }
+	    	}
+  	
+    	
+    	if((txtExamID.getLength()!=6)&&(flag2==1)) {
+    		Alert alert = new Alert(AlertType.INFORMATION);
+        	alert.setTitle("Wrong input");
+        	alert.setHeaderText(null);
+        	alert.setContentText("Exam ID must be 6");
+        	alert.showAndWait();
+    	}
+    	else if ((temp2<1)&&(flag2==1)) {
+        	Alert alert = new Alert(AlertType.INFORMATION);
+        	alert.setTitle("Wrong input");
+        	alert.setHeaderText(null);
+        	alert.setContentText("Postive numbers only");
+        	alert.showAndWait();       
+        	}
+        	
+        	else if(flag2==1) {
+    		String temp = "U" + "-" + this.txtExamID.getText() + "-" + this.txtNewDuration.getText() + "-";
+    		System.out.println(this.getClass().getName() + "save : " + temp);
+    		ClientUI.chat.accept(temp);}
+  
+
+    	
+ 
 	}
     
     @FXML

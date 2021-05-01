@@ -20,6 +20,7 @@ import Data.Exam;
  * 
  */
 public class JDBCSingleton {
+	int temp;
 	/**
 	 * handle to this class
 	 */
@@ -77,11 +78,12 @@ public class JDBCSingleton {
 
 		try {
 			stmt = con.createStatement();
-			stmt.executeUpdate("update test set Duration='" + duration + "' where ExamID='" + id + "';");
+			 temp = stmt.executeUpdate("update test set Duration='" + duration + "' where ExamID='" + id + "';");
 		} catch (SQLException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 			return false; /* update database unsuccessful */
 		}
+		if(temp==0) return false;
 		return true;
 	}
 
