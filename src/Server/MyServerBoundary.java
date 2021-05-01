@@ -2,24 +2,25 @@ package Server;
 
 import java.net.InetAddress;
 
-import javafx.application.Platform;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+import com.sun.media.jfxmediaimpl.platform.Platform;
+
+import Client.MyClient;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import ocsf.server.ConnectionToClient;
 
 public class MyServerBoundary {
 
-	@FXML
-	private Label lblIP;
-
-	@FXML
-	private Label lblStatus;
-
-	@FXML
-	private Label lblHost;
+//	@FXML
+//	private Label lblIP;
+//
+//	@FXML
+//	private Label lblStatus;
+//
+//	@FXML
+//	private Label lblHost;
 
 //    private SimpleStringProperty host = new SimpleStringProperty(this, "host");
 
@@ -31,35 +32,91 @@ public class MyServerBoundary {
 //    	this.host.set(host);
 //    	System.out.println("setHost  : " + this.host);
 //    }
+	
+	private Label showIp = new Label();
+	private Label showHost = new Label();
+	private Label showStatus = new Label();
+	private Pane root = new Pane();
+	private Label ip = new Label();
+	private Label host = new Label();
+	private Label status = new Label();
+
 
 	public void start(Stage primaryStage) throws Exception {
+		
+		ip.setText("IP:");
+		host.setText("Host:");
+		status.setText("Status:");
+		showIp.setText("IP");
+		showHost.setText("Host");
+		showStatus.setText("Status");
+		
+		root.getChildren().add(ip);
+		ip.setLayoutX(211);
+		ip.setLayoutY(108);
+		root.getChildren().add(host);
+		host.setLayoutX(211);
+		host.setLayoutY(167);
+		root.getChildren().add(status);
+		status.setLayoutX(211);
+		status.setLayoutY(239);
+		root.getChildren().add(showIp);
+		showIp.setLayoutX(307);
+		showIp.setLayoutY(108);
+		root.getChildren().add(showHost);
+		showHost.setLayoutX(298);
+		showHost.setLayoutY(167);
+		root.getChildren().add(showStatus);
+		showStatus.setLayoutX(293);
+		showStatus.setLayoutY(239);
+		
+		primaryStage.setTitle("Server form");
+		primaryStage.setScene(new Scene(root, 600, 400));
+		primaryStage.show();
+		
 //		lblHost = new Label();
 
 //		lblHost.textProperty().bind(this.host);
-		Parent root = FXMLLoader.load(getClass().getResource("/Server/MyServer.fxml"));
-		Scene scene = new Scene(root);
-		primaryStage.setTitle("Server form");
-		primaryStage.setScene(scene);
+//		Parent root = FXMLLoader.load(getClass().getResource("/Server/MyServer.fxml"));
+//		Scene scene = new Scene(root);
+//		primaryStage.setTitle("Server form");
+//		primaryStage.setScene(scene);
 		ServerUI.runServer(ServerUI.DEFAULT_PORT);
-		primaryStage.show();
+//		primaryStage.show();
 
 	}
 
 //	public StringProperty hostProperty() {
 //		return host;
 //	}
-	public Label getIP() {
-		return lblIP;
-	}
+//	public Label getIP() {
+//		return lblIP;
+//	}
 	public void updateServerBoundary(String host, InetAddress ip, String status) {
+//		showIp.setVisible(false);
+//		showHost.setVisible(false);
+//		showStatus.setVisible(false);
+		
+		System.out.println("\n\nwhat\n" + host + ip.toString() + status + "\n");
+		javafx.application.Platform.runLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				showIp.setText(ip.toString());
+				showHost.setText(host);
+				showStatus.setText(status);
+			}
+		});
+		
+		
+
 //		lblIP = new Label();
-		System.out.println("updateServerBoundary " + host +" " +  ip +" " + status);
 //		Platform.runLater(() -> {
 //			lblIP.setText("a");
-//			lblHost.setText("n");
-//			lblStatus.setText("c");
+////			lblHost.setText("n");
+////			lblStatus.setText("c");
 //		});
-//		System.out.println("update abd " + host);
+////		System.out.println("update abd " + host);
 //		System.out.println("host - " + host);
 //		lblStatus.setText("abd");
 //		lblHost.textProperty().bind(this.host);

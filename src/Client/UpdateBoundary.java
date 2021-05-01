@@ -52,7 +52,7 @@ public class UpdateBoundary {
     		   temp2 = Integer.parseInt(txtNewDuration.getText());
     	    } 
     	catch(NumberFormatException ex) {
-    		System.err.println("Invalid string in argumment"); 
+    		System.err.println("Invalid string argument"); 
     	 }
     	     
     	char op,op1;
@@ -99,9 +99,9 @@ public class UpdateBoundary {
         	/*Alert alert = new Alert(AlertType.INFORMATION);
         	alert.setTitle("Wrong input");
         	alert.setHeaderText(null);
-        	alert.setContentText("Postive numbers only");
+        	alert.setContentText("Positive numbers only");
         	alert.showAndWait();*/       
-        	JOptionPane.showMessageDialog(null, "Postive numbers only");
+        	JOptionPane.showMessageDialog(null, "Positive numbers only");
         	}
         	
         	else if(flag2==1) {

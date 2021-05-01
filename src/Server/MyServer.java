@@ -85,8 +85,8 @@ public class MyServer extends AbstractServer {
 				client.sendToClient("S" + this.jdbc.selectQueryToString());
 				break;
 			case 'C': /* client says he is disconnected */
-				updateClientDetails(client.getInetAddress(), client.getInetAddress().getHostName(), "Disconnected");
-				System.out.println("myserver - got a c");
+				updateClientDetails(client.getInetAddress().getLocalHost(), client.getInetAddress().getHostName(), "Disconnected");
+				System.out.println("\n\nmyserver - got a c\n\n");
 				break;
 			}
 		} catch (Exception e) {
@@ -104,7 +104,12 @@ public class MyServer extends AbstractServer {
 	protected void clientConnected(ConnectionToClient client) {
 		/* output client details */
 		System.out.println("client connected...");
-		updateClientDetails(client.getInetAddress(), client.getInetAddress().getHostName(), "Connected");
+		try {
+			updateClientDetails(client.getInetAddress().getLocalHost(), client.getInetAddress().getHostName(), "Connected");
+			
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		}
 	}
 
 	private void updateClientDetails(InetAddress ip, String hostName, String status) {
