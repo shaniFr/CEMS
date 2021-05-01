@@ -71,7 +71,7 @@ public class UpdateBoundary {
 	        	alert.setContentText("you must enter only numbers!!");
 	        	alert.showAndWait();*/
 	        	flag2=0;
-			   JOptionPane.showMessageDialog(null, "Enter numbers!");
+			   JOptionPane.showMessageDialog(null, "Enter numbers!(ExamID)");
 	        	break;   
 		   }
     	}
@@ -80,11 +80,7 @@ public class UpdateBoundary {
 	    	{ 
 			   op1 = str1.charAt(i);
 			   if(((int)op1 <48)||((int)op1>57)){
-				   Alert alert = new Alert(AlertType.INFORMATION);
-		        	alert.setTitle("Wrong input");
-		        	alert.setHeaderText("wrong input");
-		        	alert.setContentText("you must enter only numbers!!");
-		        	alert.showAndWait();
+				   JOptionPane.showMessageDialog(null, "Enter numbers!(ExamID)");
 		        	flag2=0;
 		        	break;   
 			   }
@@ -92,18 +88,20 @@ public class UpdateBoundary {
   	
     	
     	if((txtExamID.getLength()!=6)&&(flag2==1)) {
-    		Alert alert = new Alert(AlertType.INFORMATION);
+    		/*Alert alert = new Alert(AlertType.INFORMATION);
         	alert.setTitle("Wrong input");
         	alert.setHeaderText(null);
         	alert.setContentText("Exam ID must be 6");
-        	alert.showAndWait();
+        	alert.showAndWait();*/
+        	 JOptionPane.showMessageDialog(null, "Exam ID must be 6");
     	}
     	else if ((temp2<1)&&(flag2==1)) {
-        	Alert alert = new Alert(AlertType.INFORMATION);
+        	/*Alert alert = new Alert(AlertType.INFORMATION);
         	alert.setTitle("Wrong input");
         	alert.setHeaderText(null);
         	alert.setContentText("Postive numbers only");
-        	alert.showAndWait();       
+        	alert.showAndWait();*/       
+        	JOptionPane.showMessageDialog(null, "Postive numbers only");
         	}
         	
         	else if(flag2==1) {
