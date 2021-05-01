@@ -1,5 +1,7 @@
 package Server;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -83,7 +85,7 @@ public class MyServer extends AbstractServer {
 				client.sendToClient("S" + this.jdbc.selectQueryToString());
 				break;
 			case 'C': /* client says he is disconnected */
-				updateClientDetails(this.getPort(), client.getInetAddress().getHostName(), "Disconnected");
+				updateClientDetails(client.getInetAddress().getLocalHost(), client.getInetAddress().getHostName(), "Disconnected");
 				System.out.println("myserver - got a c");
 				break;
 			}
@@ -102,11 +104,15 @@ public class MyServer extends AbstractServer {
 	protected void clientConnected(ConnectionToClient client) {
 		/* output client details */
 		System.out.println("client connected...");
-		updateClientDetails(this.getPort(), client.getInetAddress().getHostName(), "Connected");
+		try {
+			updateClientDetails(client.getInetAddress().getLocalHost(), client.getInetAddress().getHostName(), "Connected");
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		}
 	}
 
-	private void updateClientDetails(int port, String hostName, String status) {
-		System.out.println("...Port: " + port + "\tHost: " + hostName + "\t\tStatus: " + status);
+	private void updateClientDetails(InetAddress ip, String hostName, String status) {
+		System.out.println("...IP: " + ip + "\tHost: " + hostName + "\t\tStatus: " + status);
 		ServerUI.sb.updateServerBoundary(hostName, "something", status);
 	}
 
