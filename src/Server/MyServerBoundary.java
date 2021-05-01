@@ -1,5 +1,7 @@
 package Server;
 
+import java.net.InetAddress;
+
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -49,13 +51,14 @@ public class MyServerBoundary {
 	public Label getIP() {
 		return lblIP;
 	}
-	public void updateServerBoundary(String host, String ip, String status) {
-		lblIP = new Label();
-		Platform.runLater(() -> {
-			lblIP.setText("a");
+	public void updateServerBoundary(String host, InetAddress ip, String status) {
+//		lblIP = new Label();
+		System.out.println("updateServerBoundary " + host +" " +  ip +" " + status);
+//		Platform.runLater(() -> {
+//			lblIP.setText("a");
 //			lblHost.setText("n");
 //			lblStatus.setText("c");
-		});
+//		});
 //		System.out.println("update abd " + host);
 //		System.out.println("host - " + host);
 //		lblStatus.setText("abd");

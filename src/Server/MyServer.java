@@ -106,6 +106,7 @@ public class MyServer extends AbstractServer {
 		System.out.println("client connected...");
 		try {
 			updateClientDetails(client.getInetAddress().getLocalHost(), client.getInetAddress().getHostName(), "Connected");
+			
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}
@@ -113,7 +114,7 @@ public class MyServer extends AbstractServer {
 
 	private void updateClientDetails(InetAddress ip, String hostName, String status) {
 		System.out.println("...IP: " + ip + "\tHost: " + hostName + "\t\tStatus: " + status);
-		ServerUI.sb.updateServerBoundary(hostName, "something", status);
+		ServerUI.sb.updateServerBoundary(hostName, ip, status);
 	}
 
 	/**
