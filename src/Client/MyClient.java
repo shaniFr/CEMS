@@ -6,9 +6,12 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import Data.Exam;
+import Server.MyServerBoundary;
+import Server.ServerUI;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import ocsf.client.*;
+import ocsf.server.ConnectionToClient;
 
 public class MyClient extends AbstractClient {
 	public static boolean awaitResponse = false;
@@ -19,6 +22,8 @@ public class MyClient extends AbstractClient {
 		super(host, port);
 		this.clientUI = clientUI;
 		openConnection();
+//		if (!isConnected())
+//			quit();
 	}
 
 	@Override
