@@ -2,9 +2,7 @@ package Client;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
 import javax.swing.JOptionPane;
-
 import Data.Exam;
 import Server.MyServerBoundary;
 import Server.ServerUI;
@@ -18,12 +16,18 @@ public class MyClient extends AbstractClient {
 	public static ArrayList<Exam> exams = new ArrayList<>();
 	ChatIF clientUI;
 
+	/**
+	 * start new client connection
+	 * 
+	 * @param host
+	 * @param port
+	 * @param clientUI
+	 * @throws IOException
+	 */
 	public MyClient(String host, int port, ChatIF clientUI) throws IOException {
 		super(host, port);
 		this.clientUI = clientUI;
 		openConnection();
-//		if (!isConnected())
-//			quit();
 	}
 
 	@Override
@@ -32,9 +36,8 @@ public class MyClient extends AbstractClient {
 		String str;
 		char op;
 		str = (String) msg;
-		//op = str.charAt(0);
 
-		System.out.println(this.getClass().getName() + " handle msg from server received"+ msg);
+		System.out.println(this.getClass().getName() + " handle msg from server received\n" + msg);
 		if (!(msg instanceof String)) {
 			System.out.println("Client : Invalid message from server !!");
 			return;
@@ -43,30 +46,35 @@ public class MyClient extends AbstractClient {
 		op = str.charAt(0);
 		switch (op) {
 		case 'X': /* server says he updated the database unsuccessfully */
-			{
-				JOptionPane.showMessageDialog(null, "Test does not exist");
-        	break;
-        
-			}
-		case 'Y':{ /* server says he updated the database successfully */
-			System.out.println("client is happy :)");
+		{
+			JOptionPane.showMessageDialog(null, "Test does not exist");
+			break;
+
+		}
+		case 'Y': { /* server says he updated the database successfully */
 			JOptionPane.showMessageDialog(null, "update successfully");
-			break;}
+			break;
+		}
 		case 'S': /* server says he replayed the database */
 			exams = decodeMessageFromServer(str);
 			break;
-
 		}
 		awaitResponse = false;
 	}
 
+	/**
+	 * creating ArrayList of exams that will transfer to the view DB screen
+	 * 
+	 * @param str
+	 * @return
+	 */
 	private ArrayList<Exam> decodeMessageFromServer(String str) {
 		ArrayList<Exam> examTable = new ArrayList<>();
 		String[] decodedMsg;
 		String temp = str.substring(1);
-		decodedMsg = temp.split("-");
-		
 		int i = 0;
+
+		decodedMsg = temp.split("-");
 
 		for (int j = 0; j < decodedMsg.length / 5; j++) {
 			Exam ex = new Exam("", "", "", 0, "");
@@ -78,7 +86,6 @@ public class MyClient extends AbstractClient {
 			i = i + 5;
 			examTable.add(ex);
 		}
-		System.out.println("done");
 		return examTable;
 	}
 
@@ -88,18 +95,14 @@ public class MyClient extends AbstractClient {
 			openConnection();// in order to send more than one message
 			awaitResponse = true;
 			sendToServer(message);
-			// wait for response
 			while (awaitResponse) {
 				try {
 					Thread.sleep(100);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-
 			}
-		}
-
-		catch (IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 			clientUI.display("Could not send message to server: Terminating client." + e);
 			quit();
@@ -113,8 +116,7 @@ public class MyClient extends AbstractClient {
 		try {
 			this.sendToServer("C");
 			closeConnection();
-		} catch (IOException e) {
-		}
+		} catch (IOException e) {}
 		System.exit(0);
 	}
 }

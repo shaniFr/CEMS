@@ -7,17 +7,19 @@ public class ClientUI extends Application {
 	public static ClientController chat;
 	public MyClientBoundary bd;
 	public Stage primaryStage;
+
 	public static void main(String[] args) {
-		
-		launch(args); 
+		launch(args);
 	}
-	
+
+	/**
+	 * start new client connection to boundary
+	 */
 	@Override
 	public void start(Stage pS) throws Exception {
 		chat = new ClientController("localhost", 5555);
 		primaryStage = pS;
 		bd = new MyClientBoundary();
 		bd.start(primaryStage);
-				
 	}
 }

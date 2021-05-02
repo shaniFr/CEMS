@@ -21,25 +21,21 @@ public class MyObservableServer extends ObservableServer {
 	 */
 	@Override
 	protected synchronized void clientConnected(ConnectionToClient client) {
-		//setChanged();
-		//notifyObservers(CLIENT_CONNECTED);
 		/* output client details */
 		System.out.println("client connected...");
-		//updateClientDetails(this.getPort(), client.getInetAddress().getHostName(), "Connected");
 	}
-	  /**
-	   * Hook method called each time a client disconnects.
-	   * The method may be overridden by subclasses.
-	   *
-	   * @param client the connection with the client.
-	   */
+
+	/**
+	 * Hook method called each time a client disconnects. The method may be
+	 * overridden by subclasses.
+	 *
+	 * @param client the connection with the client.
+	 */
 	@Override
-	  protected synchronized void clientDisconnected(ConnectionToClient client) 
-	  {
-	    //setChanged();
-	    //notifyObservers(CLIENT_DISCONNECTED);
-	    System.out.println("are you getting here?");
-		System.out.println("Port: " + this.getPort() + "\tHost: " + client.getInetAddress().getHostName()
-				+ "\tStatus: Disconnected");
-	  }
+	protected synchronized void clientDisconnected(ConnectionToClient client) {
+		System.out.println("are you getting here?");
+		System.out.println("Port: " + this.getPort() + "\tHost: " 
+					       + client.getInetAddress().getHostName() 
+					       + "\tStatus: Disconnected");
+	}
 }

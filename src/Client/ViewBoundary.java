@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
 import Data.Exam;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -34,7 +33,6 @@ import javafx.stage.WindowEvent;
 import javafx.util.Callback;
 
 public class ViewBoundary implements Initializable {
-
 	@FXML
 	private Button btnBack;
 
@@ -74,26 +72,25 @@ public class ViewBoundary implements Initializable {
 		primaryStage.setTitle("Exam Database");
 		primaryStage.setScene(scene);
 		primaryStage.show();
-		
+
 		primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-		    @Override
-		    public void handle(WindowEvent event) {
+			@Override
+			public void handle(WindowEvent event) {
+				// consume event
+				event.consume();
 
-		        // consume event
-		        event.consume();
+				// show close dialog
+				Alert alert = new Alert(AlertType.CONFIRMATION);
+				alert.setTitle("Close Confirmation");
+				alert.setHeaderText("Do you really want to quit?");
+				alert.initOwner(primaryStage);
 
-		        // show close dialog
-		        Alert alert = new Alert(AlertType.CONFIRMATION);
-		        alert.setTitle("Close Confirmation");
-		        alert.setHeaderText("Do you really want to quit?");
-		        alert.initOwner( primaryStage);
-
-		        Optional<ButtonType> result = alert.showAndWait();
-		        if (result.get() == ButtonType.OK){
-		            ClientUI.chat.client.quit();
-		        	Platform.exit();
-		        }
-		    }
+				Optional<ButtonType> result = alert.showAndWait();
+				if (result.get() == ButtonType.OK) {
+					ClientUI.chat.client.quit();
+					Platform.exit();
+				}
+			}
 		});
 	}
 
@@ -113,7 +110,6 @@ public class ViewBoundary implements Initializable {
 		Course.setCellValueFactory(new PropertyValueFactory<Exam, String>("Course"));
 		Duration.setCellValueFactory(new PropertyValueFactory<Exam, Integer>("Duration"));
 		Scores.setCellValueFactory(new PropertyValueFactory<Exam, String>("Scores"));
-
 		tblView.setItems(data);
 	}
 
@@ -127,7 +123,5 @@ public class ViewBoundary implements Initializable {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
-
 }

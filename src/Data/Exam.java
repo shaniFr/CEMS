@@ -2,13 +2,12 @@ package Data;
 
 import java.util.ArrayList;
 
-
 public class Exam {
-	private String ExamID="";
+	private String ExamID = "";
 	private int Duration;
-	private String Subject="";
-	private String Course="";
-	private String Scores="";
+	private String Subject = "";
+	private String Course = "";
+	private String Scores = "";
 
 	public Exam(String ExamID, String Subject, String Course, int Duration, String Scores) {
 		this.ExamID = ExamID;
@@ -16,9 +15,8 @@ public class Exam {
 		this.Course = Course;
 		this.Duration = Duration;
 		this.Scores = Scores;
-		
 	}
-	
+
 	public String getExamID() {
 		return ExamID;
 	}
@@ -52,41 +50,14 @@ public class Exam {
 	}
 
 	public void setScores(String scores) {
-		System.out.println(getClass().getName() + scores);
 		Scores = scores;
 	}
-	
+
 	public String getScores() {
 		return Scores;
 	}
 
-//	/* this won't survive.. */
-//	public String toString() {
-//		ArrayList<String> scores = getScores();
-////		return "ExamID: " + ExamID + "\tDuration: " + Duration + "\tSubject: " + Subject + "\tCourse: " + Course
-////				+ "\tScores: " + scores;
-////		return "ExamID: " + ExamID + "\tDuration: " + Duration + "\tSubject: " + Subject + "\tCourse: " + Course
-////				+ "\tScores: " + "..";
-//		return "hiii";
-//	}
-
 	public String getScoresInString() {
 		return Scores;
 	}
-//	public ArrayList<String> getScores() {
-//		String temp1, temp2;
-//		ArrayList<String> res = new ArrayList<>();
-//		int i = 0;
-//
-//		if (Scores == null)
-//			return null;
-//
-//		temp1 = Scores;
-//		while (i < temp1.length() - 3) {
-//			temp2 = temp1.substring(i, i + 3);
-//			res.add(temp2);
-//		}
-//		return res;
-//	}
-
 }

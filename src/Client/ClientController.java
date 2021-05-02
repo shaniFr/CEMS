@@ -4,7 +4,6 @@ package Client;
 //"Object Oriented Software Engineering" and is issued under the open-source
 //license found at www.lloseng.com 
 import java.io.*;
-
 import Server.ServerUI;
 
 /**
@@ -19,21 +18,18 @@ import Server.ServerUI;
  */
 public class ClientController implements ChatIF {
 //Class variables *************************************************
-
 	/**
 	 * The default port to connect on.
 	 */
 	public static int DEFAULT_PORT;
 
 //Instance variables **********************************************
-
 	/**
 	 * The instance of the client that created this ConsoleChat.
 	 */
 	MyClient client;
 
 //Constructors ****************************************************
-
 	/**
 	 * Constructs an instance of the ClientConsole UI.
 	 *
@@ -43,7 +39,7 @@ public class ClientController implements ChatIF {
 	public ClientController(String host, int port) {
 		try {
 			client = new MyClient(host, port, this);
-			
+
 		} catch (IOException exception) {
 			System.out.println(this.getClass() + " Error: Can't setup connection!" + " Terminating client.");
 			System.exit(1);
@@ -51,12 +47,11 @@ public class ClientController implements ChatIF {
 	}
 
 //Instance methods ************************************************
-
 	/**
 	 * This method waits for input from the console. Once it is received, it sends
 	 * it to the client's message handler.
 	 */
-	
+
 	public void accept(Object message) {
 		client.handleMessageFromClientUI(message);
 	}

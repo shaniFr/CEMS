@@ -2,22 +2,19 @@ package Server;
 
 import java.sql.*;
 import java.util.ArrayList;
-
 import Data.Exam;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
-//import java.sql.Connection;
-//import java.sql.DriverManager;
-//import java.sql.PreparedStatement;
-//import java.sql.ResultSet;
-//import java.sql.SQLException;
-//import java.sql.Statement;
 /**
- * 
  * @author Ayala Cohen
  * 
  *         holds connection to the mySQL database singleton - there is only 1
  *         instance of the JDBC connector
- * 
  */
 public class JDBCSingleton {
 	int temp;
@@ -52,7 +49,6 @@ public class JDBCSingleton {
 			System.out.println("SQLState: " + ex.getSQLState());
 			System.out.println("VendorError: " + ex.getErrorCode());
 		}
-
 	}
 
 	/**
@@ -62,13 +58,12 @@ public class JDBCSingleton {
 	public static JDBCSingleton getInstance() {
 		if (jdbc == null)
 			jdbc = new JDBCSingleton();
-
 		return jdbc;
 	}
 
 	/**
 	 * 
-	 * @param id     Exam ID that will have its duration updated
+	 * @param id     - Exam ID that will have its duration updated
 	 * @param newdur New duration for given exam ID
 	 * @return
 	 */
@@ -78,21 +73,25 @@ public class JDBCSingleton {
 
 		try {
 			stmt = con.createStatement();
-			 temp = stmt.executeUpdate("update test set Duration='" + duration + "' where ExamID='" + id + "';");
+			temp = stmt.executeUpdate("update test set Duration='" + duration + "' where ExamID='" + id + "';");
 		} catch (SQLException e) {
-			//e.printStackTrace();
+			// e.printStackTrace();
 			return false; /* update database unsuccessful */
 		}
-		if(temp==0) return false;
+		if (temp == 0)
+			return false;
 		return true;
 	}
 
-
+	/**
+	 * get all the data form the table in our mySql
+	 * @return
+	 */
 	public String selectQueryToString() {
 		Statement stmt;
 		ResultSet rs;
-		String id, sub, cour, scores, result="";
-		
+		String id, sub, cour, scores, result = "";
+
 		int dur;
 		try {
 			stmt = con.createStatement();
@@ -104,47 +103,12 @@ public class JDBCSingleton {
 				cour = rs.getString(3);
 				dur = rs.getInt(4);
 				scores = rs.getString(5);
-				result += id + "-" + sub + "-" + cour + "-" + dur + "-" + scores +"-";
+				result += id + "-" + sub + "-" + cour + "-" + dur + "-" + scores + "-";
 			}
-			
 			rs.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
 		return result;
-		
 	}
-//	public ArrayList<Exam> selectQuery() {
-//		Statement stmt;
-//		ResultSet rs;
-//		Exam newExam;
-//		ArrayList<Exam> examlist = new ArrayList<>();
-//		String id, sub, cour, scores;
-//		
-//		int dur;
-//		try {
-//			stmt = con.createStatement();
-//			rs = stmt.executeQuery("select * from test");
-//			while (rs.next()) {
-//				// get values from database
-//				id = rs.getString(1);
-//				sub = rs.getString(2);
-//				cour = rs.getString(3);
-//				dur = rs.getInt(4);
-//				scores = rs.getString(5);
-//
-//				newExam = new Exam(id, dur, sub, cour, scores);
-//				examlist.add(newExam);
-//			}
-//			
-//			rs.close();
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//		
-//		return examlist;
-//
-//		
-//	}
 }
