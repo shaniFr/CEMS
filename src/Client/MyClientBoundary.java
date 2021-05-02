@@ -1,14 +1,25 @@
 package Client;
 
+import java.io.IOException;
+import java.util.Optional;
+
+import Server.MyServerBoundary;
+import Server.ServerUI;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class MyClientBoundary {
 
@@ -23,8 +34,29 @@ public class MyClientBoundary {
 		Scene scene = new Scene(root);
 		primaryStage.setTitle("User form");
 		primaryStage.setScene(scene);
-
 		primaryStage.show();
+		
+		primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+		    @Override
+		    public void handle(WindowEvent event) {
+
+		        // consume event
+		        event.consume();
+
+		        // show close dialog
+		        Alert alert = new Alert(AlertType.CONFIRMATION);
+		        alert.setTitle("Close Confirmation");
+		        alert.setHeaderText("Do you really want to quit?");
+		        alert.initOwner( primaryStage);
+
+		        Optional<ButtonType> result = alert.showAndWait();
+		        if (result.get() == ButtonType.OK){
+		            ClientUI.chat.client.quit();
+		        	Platform.exit();
+		        }
+		    }
+		});
+		
 	}
 
 	@FXML
@@ -52,5 +84,4 @@ public class MyClientBoundary {
 			e.printStackTrace();
 		}
 	}
-
 }

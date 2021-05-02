@@ -91,7 +91,7 @@ public class ViewBoundary implements Initializable {
 
 	@FXML
 	void backMain(ActionEvent event) {
-		((Node)event.getSource()).getScene().getWindow().hide(); //hide primary window
+		((Node)event.getSource()).getScene().getWindow().hide(); //hide window
 		MyClientBoundary mcb = new MyClientBoundary();
 		Stage primaryStage = new Stage();
 		try {

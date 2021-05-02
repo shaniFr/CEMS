@@ -2,6 +2,8 @@ package Client;
 
 import javax.swing.JOptionPane;
 
+import com.sun.media.jfxmediaimpl.platform.Platform;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
