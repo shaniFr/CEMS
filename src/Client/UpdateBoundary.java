@@ -1,10 +1,13 @@
 package Client;
 
+import java.util.Optional;
+
 import javax.swing.JOptionPane;
 
 import com.sun.media.jfxmediaimpl.platform.Platform;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -13,9 +16,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class UpdateBoundary {
 
@@ -44,6 +49,27 @@ public class UpdateBoundary {
 		primaryStage.setTitle("Update Exam");
 		primaryStage.setScene(scene);
 		primaryStage.show();
+		
+		primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+		    @Override
+		    public void handle(WindowEvent event) {
+
+		        // consume event
+		        event.consume();
+
+		        // show close dialog
+		        Alert alert = new Alert(AlertType.CONFIRMATION);
+		        alert.setTitle("Close Confirmation");
+		        alert.setHeaderText("Do you really want to quit?");
+		        alert.initOwner( primaryStage);
+
+		        Optional<ButtonType> result = alert.showAndWait();
+		        if (result.get() == ButtonType.OK){
+		            ClientUI.chat.client.quit();
+		        	javafx.application.Platform.exit();
+		        }
+		    }
+		});
 	}
     
     
