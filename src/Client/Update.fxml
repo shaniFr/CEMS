@@ -1,16 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.UpdateBoundary">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.UpdateBoundary">
    <children>
       <TextField fx:id="txtExamID" layoutX="207.0" layoutY="89.0" />
-      <Label fx:id="lblExamID" layoutX="120.0" layoutY="94.0" text="ExamID:" />
-      <Label fx:id="lblExamDuration" layoutX="38.0" layoutY="156.0" text="New Exam Duration:" />
+      <Label fx:id="lblExamID" layoutX="131.0" layoutY="92.0" text="ExamID:" textFill="#8c1f6f">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Label>
+      <Label fx:id="lblExamDuration" layoutX="38.0" layoutY="156.0" text="New Exam Duration:" textFill="#8c1f6f">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Label>
       <TextField fx:id="txtNewDuration" layoutX="207.0" layoutY="151.0" />
-      <Button fx:id="btnSave" layoutX="347.0" layoutY="246.0" mnemonicParsing="false" onAction="#Save" style="-fx-font-size: 25;" text="Save" />
-      <Button fx:id="btnBack" layoutX="167.0" layoutY="246.0" mnemonicParsing="false" onAction="#backMain" style="-fx-font-size: 25;" text="Back" />
+      <Button fx:id="btnSave" layoutX="257.0" layoutY="232.0" mnemonicParsing="false" onAction="#Save" prefHeight="54.0" prefWidth="86.0" style="-fx-font-size: 25;" text="Save" textFill="#8c1f6f">
+         <effect>
+            <InnerShadow color="#6d06ea" />
+         </effect></Button>
+      <Button fx:id="btnBack" layoutX="34.0" layoutY="316.0" mnemonicParsing="false" onAction="#backMain" style="-fx-font-size: 25;" text="Back" textFill="#3f0d80">
+         <effect>
+            <InnerShadow color="#4ed2e1" />
+         </effect></Button>
    </children>
+   <effect>
+      <Lighting diffuseConstant="1.8" specularConstant="0.64">
+         <bumpInput>
+            <Shadow />
+         </bumpInput>
+         <light>
+            <Light.Distant color="#e2e4a5" />
+         </light>
+      </Lighting>
+   </effect>
 </AnchorPane>
